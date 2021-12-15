@@ -1,63 +1,99 @@
 <template>
-  <div class="container p-2 lg:p-8 flex flex-col">
-    <ul v-if="users.length === 0" class="grid grid-cols-1 gap-6 bg-gray-100 dark:bg-gray-900 rounded p-8 w-full sm:grid-cols-2 lg:grid-cols-3">
-      <contact-card-skeleton v-for="i in 9" :key="`skel-${i}`" />
-    </ul>
-    <ul v-if="users.length &gt; 0" class="grid grid-cols-1 gap-6 bg-gray-100 dark:bg-gray-900 rounded p-8 w-full sm:grid-cols-2 lg:grid-cols-3">
-      <contact-card v-for="(user, index) in users" :key="index" :user="user" />
-    </ul>
-    <div class="text-center mt-4">
-      <div class="mb-4">
-        <push-button @click="error">
-          <icon icon="mdi:error" class="w-6 h-6 text-red-600 mr-2.5" />
-          Force PHP Error
-        </push-button>
+  <main class="h-fullscreen flex items-center justify-center">
+    <div class="container mx-auto text-center">
+      <h1 class="text-darked text-2xl md:text-4xl font-bold mb-6">
+        Ingresá tu PIN de 4 dígitos
+      </h1>
+
+      <div class="max-w-xs mx-auto">
+        <input
+          v-model="form.code"
+          type="password"
+          placeholder="Ingresa aquí tu PIN"
+          class="
+            bg-input-background rounded-2xl border-0 px-6 py-3 mb-6 focus:outline-none focus:shadow-none focus:ring-transparent
+            text-input-text font-bold
+            placeholder-text-input-text placeholder-font-bold placeholder-input-placeholder-color
+          "
+          disabled
+        >
+
+        <div v-if="form.error" class="mb-6">
+          <p class="text-error text-sm font-medium">El PIN es inválido. Intentá nuevamente</p>
+        </div>
+
+        <div class="grid grid-cols-3 gap-6 mb-6">
+          <button
+            v-for="(value, i) in 9"
+            :key="i"
+            class="h-20 w-20 flex items-center justify-center border-2 border-primary rounded-full text-primary text-2xl font-bold hover:bg-primary hover:text-white disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-primary disabled:cursor-not-allowed transition duration-300 ease-in-out"
+            :disabled="form.loading"
+            @click="tapCode(value.toString())"
+          >
+            {{ value }}
+          </button>
+        </div>
+
+        <div class="flex justify-center mb-16">
+          <button
+            class="h-20 w-20 flex items-center justify-center border-2 border-primary rounded-full text-primary text-2xl font-bold hover:bg-primary hover:text-white disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-primary disabled:cursor-not-allowed transition duration-300 ease-in-out"
+            :disabled="form.loading"
+            @click="tapCode('0')"
+          >
+            0
+          </button>
+        </div>
+
+        <button class="text-primary font-bold" @click="openModal()">
+          Olvidé mi PIN
+        </button>
       </div>
-      <span>provided by endpoint</span><span>&nbsp;</span>
-      <a class="text-blue-400" :href="`${$axios.defaults.baseURL}/example?count=9`">/example</a>
-      <span>&nbsp;</span>
-      <span class="text-sm">(2 second delay)</span>
     </div>
-    <div class="text-center mx-auto mt-4">
-      <span class="mr-4">nuxt-tailvue kitchen sink:</span>
-      <div class="mt-2 flex mx-auto">
-        <n-link to="/modal">
-          <push-button theme="whiteLeft" class="-mr-px">
-            Modal
-          </push-button>
-        </n-link>
-        <n-link to="/toast">
-          <push-button theme="whiteMid">
-            toasts
-          </push-button>
-        </n-link>
-        <n-link to="/button">
-          <push-button theme="whiteMid">
-            buttons
-          </push-button>
-        </n-link>
-        <n-link to="/icon">
-          <push-button theme="whiteRight">
-            icons
-          </push-button>
-        </n-link>
-      </div>
-    </div>
-  </div>
+  </main>
 </template>
 
-<script lang="ts" setup>
-const ctx = useContext()
-const users = ref([] as models.Users)
-const count = ref(9)
-onMounted(() => get(count.value))
-async function get (count: number) : Promise<void> {
-  await ctx.$sleep(2000)
-  users.value = (await ctx.$axios.get('example', { params: { count } })).data.data
-}
-async function error (): Promise<void> {
-  await ctx.$axios.get('/error')
+<script>
+export default {
+  data () {
+    return {
+      form: {
+        code: '',
+        loading: false,
+        success: false,
+        error: false,
+      },
+    }
+  },
+  methods: {
+    openModal () {
+      this.$store.commit('recovery/toggle')
+    },
+    tapCode (value) {
+      if (this.form.code.length < 4) {
+        this.form.code = this.form.code + value
+        if (this.form.code.length === 4) {
+          this.form.loading = true
+          this.$axios.get('/organizations/auth/' + this.form.code).then((res) => {
+            if (res.data.data) {
+              this.form.success = true
+              localStorage.setItem('dislub-auth', JSON.stringify(res.data.data))
+              this.$router.push('/dashboard')
+            } else
+              this.form.error = true
+          }).catch((err) => {
+            console.log(err)
+            this.form.loading = false
+            this.form.error = true
+          })
+        }
+      }
+    },
+  },
 }
 </script>
 
-<script lang="ts">export default { auth: false }</script>
+<style scoped>
+  .h-fullscreen {
+    height: calc( 100vh - 97px );
+  }
+</style>

@@ -11,11 +11,18 @@ export default {
   */
   target: 'server',
   /*
+  ** The env property
+  ** See https://nuxtjs.org/docs/configuration-glossary/configuration-env/
+  */
+  env: {
+    APP_NAME: process.env.APP_NAME || 'Nuxt.js App',
+  },
+  /*
   ** Headers of the page
   ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: process.env.APP_NAME || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -51,11 +58,15 @@ export default {
     '@/components/cards',
     '@/components/header',
     '@/components/buttons',
+    '@/components/modals',
+    '@/components/ui',
   ],
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    // https://google-fonts.nuxtjs.org/
+    '@nuxtjs/google-fonts',
     // https://tailwindcss.nuxtjs.org/
     '@nuxtjs/tailwindcss',
     // https://typescript.nuxtjs.org/
@@ -116,24 +127,15 @@ export default {
   ** See https://auth.nuxtjs.org/
   */
   router: {
-    middleware: ['auth'],
+    // middleware: ['auth'],
   },
   auth: {
-    redirect: {
-      login: '/',
-      logout: '/',
-      home: '/home',
-    },
-    strategies: {
-      local: {
-        token: {
-          maxAge: 60 * 60 * 24 * 30,
-        },
-        endpoints: {
-          user: { url: '/me', method: 'get', propertyName: 'data' },
-          logout: { url: '/logout', method: 'get' },
-        },
-      },
+
+  },
+
+  googleFonts: {
+    families: {
+      Poppins: true,
     },
   },
   /*

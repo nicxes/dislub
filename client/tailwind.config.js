@@ -15,13 +15,22 @@ module.exports = {
     },
   },
   plugins: [
+    require('@tailwindcss/forms'),
   ],
   theme: {
     extend: {
       colors: {
+        darked: '#14142B',
+        background: '#F7F7FC',
+        line: '#D9DBE9',
+        primary: '#3B89A1',
+        error: '#C30052',
+        'input-background': '#EFF0F7',
+        'input-placeholder-color': '#A0A3BD',
       },
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        body: ['Poppins'],
+        display: ['Poppins'],
       },
     },
   },

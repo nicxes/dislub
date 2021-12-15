@@ -1,13 +1,6 @@
 <template>
-  <div class="flex items-center">
-    <IconLaravel class="w-16 h-16 -mt-8" primary="text-red-500" />
-    <IconNuxt class="w-16 h-16 -ml-6 mt-8" />
-  </div>
+  <img
+    src="https://www.dislub.com.ar/wp-content/uploads/2018/10/logo-menu-1.jpg"
+    class="h-12"
+  >
 </template>
-
-<script>
-import { IconLaravel, IconNuxt } from 'tv-icon'
-export default {
-  components: { IconLaravel, IconNuxt },
-}
-</script>
