@@ -59,6 +59,7 @@ export default {
     '@/components/navigation',
     '@/components/modals',
     '@/components/userbox',
+    '@/components/home',
   ],
   /*
   ** Nuxt.js dev-modules

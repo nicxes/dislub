@@ -1,5 +1,8 @@
 <template>
-  <h1>Dashboard</h1>
+  <div class="px-6">
+    <Carousel />
+    <LastedProducts />
+  </div>
 </template>
 
 <script>
