@@ -1,6 +1,6 @@
 <template>
   <section class="py-12">
-    <h3 class=" text-darked text-3xl font-bold text-center mb-4">Productos</h3>
+    <h3 class="text-darked text-3xl font-bold text-center mb-4">Productos</h3>
 
     <ul class="grid grid-cols-7 gap-6 mb-6">
       <CardProduct name="FORMULA 5W-30" image="/images/products/1.png" />

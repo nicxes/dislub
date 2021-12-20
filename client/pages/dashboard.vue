@@ -2,6 +2,7 @@
   <div class="px-6">
     <Carousel />
     <LastedProducts />
+    <LastedOrders />
   </div>
 </template>
 
