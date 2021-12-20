@@ -55,11 +55,10 @@ export default {
   */
   components: [
     '@/components',
-    '@/components/cards',
-    '@/components/header',
-    '@/components/buttons',
-    '@/components/modals',
     '@/components/ui',
+    '@/components/navigation',
+    '@/components/modals',
+    '@/components/userbox',
   ],
   /*
   ** Nuxt.js dev-modules

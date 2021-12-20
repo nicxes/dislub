@@ -4,7 +4,7 @@
       <div class="animated absolute bottom-0 left-0 right-0 mx-auto max-w-lg bg-white rounded-t-3xl px-4 pt-4 pb-10 text-center">
         <div class="flex justify-end mb-5">
           <div @click="$store.commit('recovery/toggle')">
-            <img src="/images/icons/close.svg">
+            <img src="/images/icons/close.svg" class="cursor-pointer">
           </div>
         </div>
 

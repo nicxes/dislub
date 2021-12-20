@@ -25,4 +25,12 @@
   .fade-enter, .fade-leave-to {
     opacity: 0;
   }
+
+  .fade-delay-enter-active, .fade-delay-leave-active {
+    transition: opacity .3s;
+    transition-delay: 4s;
+  }
+  .fade-delay-enter, .fade-delay-leave-to {
+    opacity: 0;
+  }
 </style>

@@ -24,6 +24,7 @@ module.exports = {
         background: '#F7F7FC',
         line: '#D9DBE9',
         primary: '#3B89A1',
+        'primary-yellow': '#E7BA4F',
         error: '#C30052',
         'input-background': '#EFF0F7',
         'input-placeholder-color': '#A0A3BD',

@@ -1,6 +1,10 @@
 <template>
-  <div>
-    <Nuxt />
+  <div class="relative min-h-screen flex">
+    <Navigation />
+    <div class="w-full">
+      <Userbox />
+      <Nuxt />
+    </div>
   </div>
 </template>
 
