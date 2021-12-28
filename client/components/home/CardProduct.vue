@@ -1,15 +1,17 @@
 <template>
-  <article class="Card bg-[#FCFCFC] rounded-2xl border-2 border-input-background hover:border-[#D9DBE9] p-4 cursor-pointer transition duration-300">
-    <div class="border-primary-yellow border-b-2 pb-4">
-      <img :src="image" :alt="name" class="mx-auto">
-    </div>
+  <NuxtLink to="/products/1">
+    <article class="Card bg-[#FCFCFC] rounded-2xl border-2 border-input-background hover:border-[#D9DBE9] p-4 cursor-pointer transition duration-300">
+      <div class="border-primary-yellow border-b-2 pb-4">
+        <img :src="image" :alt="name" class="mx-auto">
+      </div>
 
-    <div class="mt-4">
-      <h5 class="text-[#6E7191] font-semibold uppercase">
-        {{ name }}
-      </h5>
-    </div>
-  </article>
+      <div class="mt-4">
+        <h5 class="text-[#6E7191] font-semibold uppercase">
+          {{ name }}
+        </h5>
+      </div>
+    </article>
+  </NuxtLink>
 </template>
 
 <script>
