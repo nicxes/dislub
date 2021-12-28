@@ -1,5 +1,5 @@
 <template>
-  <aside class="Navigation sticky top-0 left-0 h-screen bg-white flex flex-col justify-between p-6 w-64">
+  <aside class="Navigation hidden md:flex sticky top-0 left-0 h-screen bg-white flex-col justify-between p-6 w-64">
     <div>
       <div class="mb-16">
         <Logo />
