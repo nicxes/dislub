@@ -40,7 +40,7 @@
 
     <div class="bg-primary-yellow text-white rounded-xl px-3 py-3">
       <h4 class="font-medium text-sm mb-1 flex items-center">
-        <img src="images/icons/cart.svg" class="mr-2">
+        <img src="/images/icons/cart.svg" class="mr-2">
         Cotización actual:
       </h4>
       <h5 class="font-semibold text-lg tracking-[0.75px]">2 productos</h5>
