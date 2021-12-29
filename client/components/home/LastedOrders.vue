@@ -1,6 +1,6 @@
 <template>
-  <section class="pb-20">
-    <h3 class="text-darked text-2xl md:text-3xl font-bold md:text-center mb-4 tracking-[1px]">Últimas cotizaciones</h3>
+  <section class="pb-32 md:pb-20">
+    <h3 class="text-darked text-2xl md:text-3xl font-bold md:text-center mb-3 md:mb-4 tracking-[1px]">Últimas cotizaciones</h3>
 
     <ul class="mb-6">
       <CardOrder />
