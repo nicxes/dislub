@@ -2,7 +2,7 @@
   <div class="relative min-h-screen flex">
     <Navigation />
     <div class="w-full">
-      <Userbox />
+      <NavbarLogged />
       <Nuxt />
     </div>
   </div>

@@ -55,10 +55,9 @@ export default {
   */
   components: [
     '@/components',
-    '@/components/ui',
-    '@/components/navigation',
     '@/components/modals',
-    '@/components/userbox',
+    '@/components/navigation',
+    '@/components/navbar',
     '@/components/home',
   ],
   /*
@@ -135,7 +134,7 @@ export default {
 
   googleFonts: {
     families: {
-      Poppins: true,
+      Poppins: [300, 400, 500, 600, 700],
     },
   },
   /*

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar />
+    <NavbarOut />
     <Nuxt />
     <ModalRecovery />
   </div>
