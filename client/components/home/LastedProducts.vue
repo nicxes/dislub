@@ -1,8 +1,8 @@
 <template>
   <section class="py-12">
-    <h3 class="text-darked text-3xl font-bold text-center mb-4">Productos</h3>
+    <h3 class="text-darked text-2xl md:text-3xl font-bold md:text-center mb-4 tracking-[1px]">Productos</h3>
 
-    <ul class="grid grid-cols-7 gap-6 mb-6">
+    <ul class="hidden md:grid grid-cols-7 gap-6 mb-6">
       <CardProduct name="FORMULA 5W-30" image="/images/products/1.png" />
       <CardProduct name="MOBIL DELVAC 1 5W-40" image="/images/products/2.png" />
       <CardProduct name="MOBIL SUPER 1000 X3 15W-40" image="/images/products/3.png" />
