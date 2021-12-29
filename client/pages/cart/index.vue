@@ -31,8 +31,8 @@
             <p class="mb-2">Esta es la dirección a donde nuestro equipo enviará la cotización una vez lista:</p>
 
             <div>
-              <div class="mb-8">
-                <input type="email" placeholder="Indique su e-mail" class="placeholder-input-placeholder-color bg-transparent font-semibold py-4 px-12 border-2 border-line block w-full rounded-2xl focus:ring-0 focus:outline-none focus:border-line">
+              <div class="relative Email mb-8">
+                <input type="email" placeholder="Indique su e-mail" class="placeholder-input-placeholder-color bg-transparent font-semibold py-4 px-12 border-2 border-line block w-full rounded-2xl focus:ring-0 focus:outline-none focus:border-line hover:bg-[#EFF0F6] focus:bg-[#FCFCFC] transition duration-300 ease-in-out">
               </div>
 
               <div>
@@ -90,3 +90,22 @@ export default {
 
 }
 </script>
+
+<style scoped>
+  .Email:before {
+    content: '';
+    background: url('/images/icons/email.svg') no-repeat center;
+    position: absolute;
+    left: 10px;
+    top: 9px;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+  }
+  .Email input {
+    filter: drop-shadow(4px 4px 24px rgba(0, 0, 0, 0.04));
+  }
+  .Email input:hover {
+    filter: none;
+  }
+</style>
