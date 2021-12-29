@@ -3,6 +3,7 @@
     <Navigation />
     <div class="w-full">
       <NavbarLogged />
+      <NavbarMobile />
       <Nuxt />
     </div>
   </div>
