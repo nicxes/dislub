@@ -1,6 +1,7 @@
 <template>
   <div class="relative min-h-screen flex">
     <Navigation />
+    <NavigationMobile />
     <div class="w-full">
       <NavbarLogged />
       <NavbarMobile />
