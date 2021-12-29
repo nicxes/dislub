@@ -2,7 +2,7 @@
   <main class="h-fullscreen flex items-center justify-center">
     <transition name="fade">
       <div v-show="!form.complete" class="container mx-auto text-center">
-        <h1 class="text-darked text-2xl md:text-4xl font-bold mb-6">
+        <h1 class="text-darked text-2xl md:text-3xl font-bold mb-6">
           Ingresá tu PIN de 4 dígitos
         </h1>
 
@@ -23,7 +23,7 @@
             <p class="text-error text-sm font-medium">El PIN es inválido. Intentá nuevamente</p>
           </div>
 
-          <div class="grid grid-cols-3 gap-6 mb-6">
+          <div class="grid grid-cols-3 gap-6 mb-6 max-w-[282px] mx-auto">
             <button
               v-for="(value, i) in 9"
               :key="i"
@@ -35,7 +35,7 @@
             </button>
           </div>
 
-          <div class="flex justify-center mb-16">
+          <div class="flex justify-center mb-16 max-w-[282px] mx-auto">
             <button
               class="h-20 w-20 flex items-center justify-center border-2 border-primary rounded-full text-primary text-2xl font-bold hover:bg-primary hover:text-white disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-primary disabled:cursor-not-allowed transition duration-300 ease-in-out"
               :disabled="form.loading"
