@@ -1,7 +1,7 @@
 <template>
   <main class="h-fullscreen flex items-center justify-center">
     <transition name="fade">
-      <div v-if="!form.complete" class="container mx-auto text-center">
+      <div v-show="!form.complete" class="container mx-auto text-center">
         <h1 class="text-darked text-2xl md:text-4xl font-bold mb-6">
           Ingresá tu PIN de 4 dígitos
         </h1>
@@ -53,7 +53,7 @@
     </transition>
 
     <transition name="fade">
-      <div v-if="form.success">
+      <div v-show="form.success">
         <h1 class="text-darked text-2xl md:text-4xl font-bold mb-6">
           ¡Bienvenidos Lubricentro San Cristóbal!
         </h1>
