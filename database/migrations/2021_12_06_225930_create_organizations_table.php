@@ -17,8 +17,9 @@ class CreateOrganizationsTable extends Migration
             $table->id();
             $table->string('logo')->nullable();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->integer('pin')->unique();
+            $table->string('email');
+            $table->string('phone')->nullable();
+            $table->string('pin')->unique();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->boolean('active')->default(true);

@@ -55,7 +55,7 @@
     <transition name="fade">
       <div v-show="form.success">
         <h1 class="text-darked text-2xl md:text-4xl font-bold mb-6">
-          ¡Bienvenidos Lubricentro San Cristóbal!
+          ¡Bienvenido {{ organzation }}!
         </h1>
 
         <div class="flex">
@@ -73,8 +73,15 @@
 
 <script>
 export default {
+  middleware (context) {
+    const data = context.app.$cookies.get('dislub-auth')
+
+    if (data)
+      context.redirect('/dashboard')
+  },
   data () {
     return {
+      organzation: null,
       form: {
         code: '',
         complete: false,
@@ -94,6 +101,12 @@ export default {
         }
       }
     })
+
+    this.$axios.$get('organizations').then((res) => {
+      console.log(res)
+    }).catch((err) => {
+      console.log(err)
+    })
   },
   methods: {
     openModal () {
@@ -111,7 +124,11 @@ export default {
       this.$axios.get('/organizations/auth/' + this.form.code).then((res) => {
         if (res.data.data) {
           this.form.complete = true
-          localStorage.setItem('dislub-auth', JSON.stringify(res.data.data))
+          this.$cookies.set('dislub-auth', res.data.data, {
+            path: '/',
+            expires: new Date(Date.now() + 60 * 60 * 24 * 30 * 1000),
+          })
+          this.organzation = res.data.data.name
 
           setTimeout(() => {
             this.form.success = true

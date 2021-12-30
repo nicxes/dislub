@@ -9,7 +9,7 @@ export default {
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target
   */
-  target: 'server',
+  target: 'static',
   /*
   ** The env property
   ** See https://nuxtjs.org/docs/configuration-glossary/configuration-env/
@@ -111,6 +111,8 @@ export default {
     '@nuxtjs/auth-next',
     // Doc: https://github.com/acidjazz/nuxt-tailvue
     ['nuxt-tailvue', { all: true }],
+    // Doc: https://www.npmjs.com/package/cookie-universal-nuxt
+    'cookie-universal-nuxt',
   ],
   /*
   ** Axios module configuration
