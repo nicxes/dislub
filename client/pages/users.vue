@@ -35,6 +35,9 @@ export default {
       users: [],
     }
   },
+  mounted () {
+    this.getUsers()
+  },
   methods: {
     getUsers () {
       this.$axios.$get('organizations').then((res) => {
@@ -43,9 +46,6 @@ export default {
         console.log(err)
       })
     },
-  },
-  mounted () {
-    this.getUsers()
   },
 }
 </script>
