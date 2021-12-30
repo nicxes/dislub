@@ -30,7 +30,7 @@
       </p>
     </div>
 
-    <div>
+    <div class="order-2 md:order-3">
       3
     </div>
   </div>
