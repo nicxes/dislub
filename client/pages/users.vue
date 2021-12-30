@@ -19,9 +19,9 @@
 
     <ul class="grid grid-cols-1 gap-4">
       <CardUser
-        v-for="(user, i) in 10"
-        :key="i"
-        :user="{ id: i, picture: null, fullname: 'Lubricentro San Cristobal', email: 'lubricentrosancristobal@gmail.com' }"
+        v-for="(user) in users"
+        :key="user.id"
+        :user="user"
       />
     </ul>
   </section>
@@ -30,5 +30,22 @@
 <script>
 export default {
   layout: 'dashboard',
+  data () {
+    return {
+      users: [],
+    }
+  },
+  methods: {
+    getUsers () {
+      this.$axios.$get('organizations').then((res) => {
+        this.users = res.data
+      }).catch((err) => {
+        console.log(err)
+      })
+    },
+  },
+  mounted () {
+    this.getUsers()
+  },
 }
 </script>

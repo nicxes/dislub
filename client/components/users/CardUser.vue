@@ -2,14 +2,14 @@
   <div class="bg-[#FCFCFC] border-2 border-line rounded-2xl p-4 grid grid-cols-2 md:grid-cols-12 gap-y-2 items-center">
     <div>
       <img
-        :src="user.picture || '/images/dislub-avatar.png'"
+        :src="user.logo || '/images/dislub-avatar.png'"
         class="border-2 border-line rounded-2xl h-[56px] w-[56px] md:h-[96px] md:w-[96px]"
       >
     </div>
 
     <div class="order-3 md:order-2 col-span-2 md:col-span-8">
       <h4 class="text-darked text-xl md:text-2xl font-bold mb-1">
-        {{ user.fullname }}
+        {{ user.name }}
       </h4>
 
       <div class="text-darked font-medium mb-2 flex items-center">

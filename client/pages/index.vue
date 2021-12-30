@@ -101,12 +101,6 @@ export default {
         }
       }
     })
-
-    this.$axios.$get('organizations').then((res) => {
-      console.log(res)
-    }).catch((err) => {
-      console.log(err)
-    })
   },
   methods: {
     openModal () {
