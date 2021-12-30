@@ -1,24 +1,31 @@
 <template>
-  <div class="bg-[#FCFCFC] border-2 border-line rounded-2xl p-4 grid grid-cols-12 items-center">
+  <div class="bg-[#FCFCFC] border-2 border-line rounded-2xl p-4 grid grid-cols-2 md:grid-cols-12 gap-y-2 items-center">
     <div>
       <img
-        src="https://scontent.fepa8-2.fna.fbcdn.net/v/t1.18169-9/22730494_1499839286771311_6711186237223725316_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=ygORrRK8X0gAX-XECJX&_nc_ht=scontent.fepa8-2.fna&oh=00_AT_mnllb8pogoOM7TdI9R12xAeQCVs64FE3DupqHmzKb6A&oe=61E28664"
-        height="96"
-        width="96"
-        class="border-2 border-line rounded-2xl px"
+        :src="user.picture || '/images/dislub-avatar.png'"
+        class="border-2 border-line rounded-2xl h-[56px] w-[56px] md:h-[96px] md:w-[96px]"
       >
     </div>
 
-    <div class="col-span-8">
-      <h4 class="text-darked text-2xl font-bold mb-1">Lubricentro San Cristobal</h4>
+    <div class="order-3 md:order-2 col-span-2 md:col-span-8">
+      <h4 class="text-darked text-xl md:text-2xl font-bold mb-1">
+        {{ user.fullname }}
+      </h4>
+
       <div class="text-darked font-medium mb-2 flex items-center">
-        lubricentrosancristobal@gmail.com
-        <button class="bg-[#EFF0F6] hover:bg-line ml-2 p-1 rounded-lg transition duration-300 ease-out">
-          <img src="/images/icons/copy.svg">
-        </button>
+        <span class="text-[13px] md:text-base">{{ user.email }}</span>
+        <div class="relative clipboard">
+          <button class="bg-[#EFF0F6] hover:bg-line ml-2 p-1 rounded-lg transition duration-300 ease-out" @click="clipboard()">
+            <img src="/images/icons/copy.svg">
+          </button>
+
+          <div class="tooltip absolute bottom-[-45px] left-[-15px] bg-[#4E4B66] py-2 px-3 text-sm text-[#FCFCFC] rounded-2xl opacity-0 transition duration-300 ease-in-out invisible">
+            Copiar
+          </div>
+        </div>
       </div>
 
-      <p class="text-[#6E7191] text-sm">
+      <p class="text-[#6E7191] text-sm font-medium">
         Último inicio de sesión: Hace 2 días
       </p>
     </div>
@@ -28,3 +35,36 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    user: {
+      type: Object,
+      required: true,
+    },
+  },
+  methods: {
+    clipboard () {
+      navigator.clipboard.writeText(this.user.email)
+    },
+  },
+}
+</script>
+
+<style scoped>
+.clipboard:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+.clipboard .tooltip:before {
+  content: "";
+  background: url('/images/union.png') no-repeat;
+  position: absolute;
+  top: -10px;
+  left: 23px;
+  height: 12px;
+  width: 28px;
+  z-index: 1;
+}
+</style>
