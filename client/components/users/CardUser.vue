@@ -16,7 +16,7 @@
         <span class="text-[13px] md:text-base">{{ user.email }}</span>
         <div class="relative clipboard">
           <button class="bg-[#EFF0F6] hover:bg-line ml-2 p-1 rounded-lg transition duration-300 ease-out" @click="clipboard()">
-            <img src="/images/icons/copy.svg">
+            <img src="/images/icons/copy.svg" class="h-[14px] w-[14px] md:w-auto md:h-auto">
           </button>
 
           <div class="tooltip absolute bottom-[-45px] left-[-15px] bg-[#4E4B66] py-2 px-3 text-sm text-[#FCFCFC] rounded-2xl opacity-0 transition duration-300 ease-in-out invisible">
