@@ -1,9 +1,11 @@
 <template>
-  <div class="px-6">
-    <Carousel />
-    <LastedProducts />
-    <LastedOrders />
-  </div>
+  <section class="px-6">
+    <div class="container mx-auto">
+      <Carousel />
+      <LastedProducts />
+      <LastedOrders />
+    </div>
+  </section>
 </template>
 
 <script>

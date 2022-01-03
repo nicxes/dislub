@@ -48,6 +48,7 @@ export default {
     '@/plugins/utils',
     '@/plugins/axios',
     '@/plugins/icon',
+    { src: '@/plugins/vue-awesome-swiper', mode: 'client' },
   ],
   /*
   ** Auto import components
@@ -109,8 +110,6 @@ export default {
     '@nuxtjs/axios',
     // Doc: https://auth.nuxtjs.org
     '@nuxtjs/auth-next',
-    // Doc: https://github.com/acidjazz/nuxt-tailvue
-    ['nuxt-tailvue', { all: true }],
     // Doc: https://www.npmjs.com/package/cookie-universal-nuxt
     'cookie-universal-nuxt',
   ],

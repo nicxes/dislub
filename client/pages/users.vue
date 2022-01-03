@@ -6,7 +6,13 @@
 
     <div class="grid grid-cols-1 md:grid-cols-12 mb-6 gap-y-6">
       <div class="md:col-span-5 order-2 md:order-1">
-        <input type="search" class="bg-white border-2 border-line rounded-2xl py-3 px-6 w-full block ga" placeholder="Buscá por nombre">
+        <input
+          v-model="search"
+          type="search"
+          class="bg-white border-2 border-line focus:border-line focus:shadow-none focus:ring-0 rounded-2xl py-3 px-6 w-full block ga"
+          placeholder="Buscá por nombre"
+          @input="searchByName($event.target.value)"
+        >
       </div>
 
       <div class="md:col-start-11 md:col-span-2 md:flex md:justify-end order-1 md:order-2">
@@ -33,6 +39,7 @@ export default {
   data () {
     return {
       users: [],
+      search: '',
     }
   },
   mounted () {
@@ -45,6 +52,9 @@ export default {
       }).catch((err) => {
         console.log(err)
       })
+    },
+    searchByName (value) {
+      console.log(value)
     },
   },
 }
