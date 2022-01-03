@@ -1,6 +1,11 @@
 <template>
-  <div>
-    <input v-model="search" type="search" placeholder="Buscá cualquier producto" class="Search py-3 px-6 border-2 border-input-background rounded-2xl w-96">
+  <div class="Search relative">
+    <input
+      v-model="search"
+      type="search"
+      placeholder="Buscá cualquier producto"
+      class="py-3 pl-16 pr-6 border-2 bg-[#FCFCFC] border-line rounded-2xl w-96 focus:shadow-none focus:outline-none focus:ring-0 focus:border-line transition duration-300 ease-out"
+    >
   </div>
 </template>
 
@@ -15,7 +20,16 @@ export default {
 </script>
 
 <style scoped>
-  .Search {
-    background: #EFF0F6;
+  .Search::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 15px;
+    z-index: 10;
+
+    height: 24px;
+    width: 24px;
+
+    background: url('/images/icons/search.svg') no-repeat center center;
   }
 </style>

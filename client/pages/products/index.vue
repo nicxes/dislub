@@ -1,5 +1,5 @@
 <template>
-  <section class="px-6 pb-20">
+  <section class="px-4 md:px-6 pb-20">
     <ul class="grid grid-cols-2 md:grid-cols-7 gap-y-4 gap-x-5 md:gap-6">
       <CardProduct v-for="(product, i) in products" :key="i" :name="product.name" :image="`images/products/${randomInt(1, 4)}.png`" />
     </ul>

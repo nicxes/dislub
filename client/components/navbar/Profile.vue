@@ -6,7 +6,7 @@
     </div>
 
     <div class="Profile relative ml-2">
-      <div @click="openMenu()" class="relative w-12 h-12 flex items-center justify-center bg-yellow-200 font-bold rounded-full cursor-pointer">
+      <div class="relative w-12 h-12 flex items-center justify-center bg-yellow-200 font-bold rounded-full cursor-pointer" @click="openMenu()">
         PM
       </div>
 

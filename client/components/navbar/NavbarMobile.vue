@@ -1,11 +1,35 @@
 <template>
   <div class="md:hidden mb-6">
     <nav class="bg-white border-b border-[#D9DBE9] px-4 py-3 flex items-center justify-between">
-      <Logo />
       <div>
-        <button class="border border-[#D9DBE9] rounded-lg p-2">
+        <NuxtLink to="/">
+          <Logo />
+        </NuxtLink>
+      </div>
+
+      <div class="relative">
+        <button class="border border-[#D9DBE9] rounded-lg p-2" @click="openMenu()">
           <img src="/images/icons/menu.svg">
         </button>
+
+        <transition name="fade">
+          <div v-show="showMenu" class="absolute z-10 mt-1 right-0 bg-input-background border-2 border-line rounded-2xl p-[10px] w-[156px]">
+            <ul class="grid grid-cols-1 gap-y-1">
+              <li
+                class="text-[#6E7191] hover:text-darked hover:bg-line rounded-lg px-2 py-1 transition duration-300 ease-out cursor-pointer"
+                @click="logout()"
+              >
+                Cerrar sesión
+              </li>
+              <li
+                class="text-[#6E7191] hover:text-darked hover:bg-line rounded-lg px-2 py-1 transition duration-300 ease-out cursor-pointer"
+                @click="help()"
+              >
+                Ayuda
+              </li>
+            </ul>
+          </div>
+        </transition>
       </div>
     </nav>
 
@@ -23,8 +47,18 @@
 export default {
   data () {
     return {
+      showMenu: false,
       showCart: true,
     }
+  },
+  methods: {
+    openMenu () {
+      this.showMenu = !this.showMenu
+    },
+    logout () {
+      this.$cookies.remove('dislub-auth')
+      this.$router.push('/')
+    },
   },
 }
 </script>
