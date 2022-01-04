@@ -46,7 +46,7 @@
             </button>
           </div>
 
-          <button class="cta text-white transition duration-300 ease-out bg-primary-yellow hover:bg-[#C69219] p-4 font-semibold rounded-2xl w-full flex justify-center items-center leading-[34px]">
+          <button class="cta text-white transition duration-300 ease-out bg-primary hover:bg-[#184158] p-4 font-semibold rounded-2xl w-full flex justify-center items-center leading-[34px]">
             Agregar a la cotización actual
             <img src="/images/icons/plus.svg" class="ml-2">
           </button>
