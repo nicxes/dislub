@@ -7,31 +7,31 @@
 
       <ul>
         <NavigationItem
-          icon="/images/icons/home.svg"
+          icon="home"
           text="Inicio"
           to="/dashboard"
         />
 
         <NavigationItem
-          icon="/images/icons/bag.svg"
+          icon="bag"
           text="Productos"
           to="/products"
         />
 
         <NavigationItem
-          icon="/images/icons/attach.svg"
+          icon="attach"
           text="Cotizaciones"
           to="/orders"
         />
 
         <NavigationItem
-          icon="/images/icons/users.svg"
+          icon="users"
           text="Usuarios"
           to="/users"
         />
 
         <NavigationItem
-          icon="/images/icons/categories.svg"
+          icon="categories"
           text="Categorías"
           to="/categories"
         />
