@@ -1,5 +1,5 @@
 <template>
-  <section class="px-4 md:px-6">
+  <section class="px-4 pb-28 md:pb-4 md:px-6">
     <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-6 mb-9">
       <div class="Search relative">
         <input
