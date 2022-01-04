@@ -10,6 +10,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  middleware: ['pin'],
+}
+</script>
+
 <style>
   html, body {
     @apply bg-gray-100 text-gray-600

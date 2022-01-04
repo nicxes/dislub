@@ -11,6 +11,5 @@
 <script>
 export default {
   layout: 'dashboard',
-  middleware: ['pin'],
 }
 </script>

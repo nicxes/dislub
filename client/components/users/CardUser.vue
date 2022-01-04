@@ -1,13 +1,13 @@
 <template>
-  <div class="bg-[#FCFCFC] border-2 border-line rounded-2xl p-4 grid grid-cols-2 md:grid-cols-12 gap-y-2 items-center">
-    <div>
+  <div class="bg-[#FCFCFC] border-2 border-line rounded-2xl p-4 grid grid-cols-3 md:grid-cols-12 gap-y-2 items-center">
+    <div class="col-span-1">
       <img
         :src="user.logo || '/images/dislub-avatar.png'"
         class="border-2 border-line rounded-2xl h-[56px] w-[56px] md:h-[96px] md:w-[96px]"
       >
     </div>
 
-    <div class="order-3 md:order-2 col-span-2 md:col-span-8">
+    <div class="order-3 md:order-2 col-span-3 md:col-span-8">
       <h4 class="text-darked text-xl md:text-2xl font-bold mb-1">
         {{ user.name }}
       </h4>
@@ -30,8 +30,21 @@
       </p>
     </div>
 
-    <div class="order-2 md:order-3">
-      3
+    <div class="order-2 md:order-3 col-span-2 md:col-span-3 flex items-center justify-end">
+      <button class="text-[#4E4B66] flex items-center flex-col justify-center font-medium py-2 px-4 hover:bg-input-placeholder-color hover:bg-opacity-50 rounded-2xl transition duration-300 ease-out">
+        <img src="/images/icons/edit.svg" class="mb-1 w-6 h-6 md:w-auto md:h-auto">
+        <span class="hidden md:block">Editar</span>
+      </button>
+
+      <button class="text-[#EB5757] flex items-center flex-col justify-center font-medium py-2 px-4 hover:bg-input-placeholder-color hover:bg-opacity-50 rounded-2xl transition duration-300 ease-out ml-2 md:ml-4">
+        <img src="/images/icons/trash.svg" class="mb-1 w-6 h-6 md:w-auto md:h-auto">
+        <span class="hidden md:block">Eliminar</span>
+      </button>
+
+      <button class="text-[#4E4B66] flex items-center flex-col justify-center font-medium py-2 px-4 hover:bg-input-placeholder-color hover:bg-opacity-50 rounded-2xl transition duration-300 ease-out ml-2 md:ml-4">
+        <img src="/images/icons/eye.svg" class="mb-1 w-6 h-6 md:w-auto md:h-auto">
+        <span class="hidden md:block">Historial</span>
+      </button>
     </div>
   </div>
 </template>

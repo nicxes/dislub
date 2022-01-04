@@ -5,11 +5,11 @@
     </h1>
 
     <div class="grid grid-cols-1 md:grid-cols-12 mb-6 gap-y-6">
-      <div class="md:col-span-5 order-2 md:order-1">
+      <div class="Search relative md:col-span-5 order-2 md:order-1">
         <input
           v-model="search"
           type="search"
-          class="bg-white border-2 border-line focus:border-line focus:shadow-none focus:ring-0 rounded-2xl py-3 px-6 w-full block ga"
+          class="bg-white border-2 border-line focus:border-line focus:shadow-none focus:ring-0 rounded-2xl py-3 px-6 pl-16 w-full block ga"
           placeholder="Buscá por nombre"
           @input="searchByName($event.target.value)"
         >
@@ -59,3 +59,18 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+  .Search::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 15px;
+    z-index: 10;
+
+    height: 24px;
+    width: 24px;
+
+    background: url('/images/icons/search.svg') no-repeat center center;
+  }
+</style>

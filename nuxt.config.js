@@ -62,6 +62,8 @@ export default {
     '@/components/home',
     '@/components/cart',
     '@/components/users',
+    '@/components/categories',
+    '@/components/orders',
   ],
   /*
   ** Nuxt.js dev-modules
