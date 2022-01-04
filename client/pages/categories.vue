@@ -3,6 +3,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-6 mb-9">
       <div class="Search relative">
         <input
+          v-model="search"
           type="search"
           placeholder="Buscá por nombre"
           class="w-full md:w-96 py-3 pl-16 pr-6 text-input-placeholder-color border-2 bg-[#FCFCFC] border-line rounded-2xl focus:shadow-none focus:outline-none focus:ring-0 focus:border-line transition duration-300 ease-out"
@@ -18,7 +19,7 @@
     </div>
 
     <ul class="grid gap-y-4">
-      <li v-for="category in categories" :key="category.id">
+      <li v-for="category in filteredCategories" :key="category.id">
         <CardCategory :category="category" @refresh-categories="getCategories" />
       </li>
     </ul>
@@ -31,7 +32,15 @@ export default {
   data () {
     return {
       categories: [],
+      search: '',
     }
+  },
+  computed: {
+    filteredCategories () {
+      return this.categories.filter((category) => {
+        return category.name.toLowerCase().match(this.search.toLowerCase())
+      })
+    },
   },
   mounted () {
     this.getCategories()
