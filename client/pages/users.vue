@@ -11,7 +11,6 @@
           type="search"
           class="bg-white border-2 border-line focus:border-line focus:shadow-none focus:ring-0 rounded-2xl py-3 px-6 pl-16 w-full block ga"
           placeholder="Buscá por nombre"
-          @input="searchByName($event.target.value)"
         >
       </div>
 
@@ -25,7 +24,7 @@
 
     <ul class="grid grid-cols-1 gap-4">
       <CardUser
-        v-for="(user) in users"
+        v-for="(user) in filteredUsers"
         :key="user.id"
         :user="user"
       />
@@ -42,6 +41,13 @@ export default {
       search: '',
     }
   },
+  computed: {
+    filteredUsers () {
+      return this.users.filter((user) => {
+        return user.name.toLowerCase().match(this.search.toLowerCase())
+      })
+    },
+  },
   mounted () {
     this.getUsers()
   },
@@ -52,9 +58,6 @@ export default {
       }).catch((err) => {
         console.log(err)
       })
-    },
-    searchByName (value) {
-      console.log(value)
     },
   },
 }
