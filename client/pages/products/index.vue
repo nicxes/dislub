@@ -1,6 +1,6 @@
 <template>
   <section class="px-4 md:px-6 pb-20">
-    <div class="grid grid-cols-4 gap-6 mb-9">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-9">
       <div class="Search relative col-span-2">
         <input v-model="search" type="search" placeholder="Buscá cualquier producto" class="w-full rounded-2xl border-2 border-line py-3 pl-16 pr-6 text-input-placeholder-color bg-[#FCFCFC] focus:shadow-none focus:outline-none focus:ring-0 focus:border-line transition duration-300 ease-out">
       </div>
