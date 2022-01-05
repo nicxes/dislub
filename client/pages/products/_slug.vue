@@ -1,5 +1,5 @@
 <template>
-  <section class="px-4 md:px-6 pb-20">
+  <section class="px-4 md:px-6 pb-56">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6 mb-4 md:mb-10">
       <h1 class="md:hidden text-2xl font-bold uppercase tracking-[1px]">MOBIL DELVAC 1 5W-40</h1>
 
@@ -63,6 +63,31 @@
       <div class="md:text-lg">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus iusto voluptate delectus! Officiis nostrum aliquam veritatis nam, voluptas quaerat explicabo illo pariatur? Sit soluta architecto ex nostrum. Non, quia repellat.</p>
       </div>
+    </div>
+
+    <div class="fixed z-40 left-0 right-0 bottom-[80px] w-full">
+      <div class="bg-white py-3 px-4 border-t-2 border-line flex items-center">
+        <button class="border-line border-2 rounded-2xl py-4 px-8 hover:bg-[#EFF0F7] transition duration-300 ease-out" @click="addLess()">
+          <img src="/images/icons/minus.svg">
+        </button>
+
+        <input
+          v-model="quatity"
+          min="0"
+          type="number"
+          placeholder="Cantidad"
+          class="max-w-[120px] bg-transparent border-0 focus:outline-none focus:shadow-none focus:ring-0 mx-auto block text-center text-sm md:text-lg font-semibold text-input-placeholder-color hide-numeric"
+        >
+
+        <button class="border-line border-2 rounded-2xl py-4 px-8 hover:bg-[#EFF0F7] transition duration-300 ease-out" @click="addMore()">
+          <img src="/images/icons/plus-2.svg">
+        </button>
+      </div>
+
+      <button class="cta text-white transition duration-300 ease-out bg-primary hover:bg-[#184158] p-4 font-semibold w-full flex justify-center items-center text-sm leading-[34px]">
+        Agregar a la cotización actual
+        <img src="/images/icons/plus.svg" class="ml-2">
+      </button>
     </div>
   </section>
 </template>
