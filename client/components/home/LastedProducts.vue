@@ -4,8 +4,8 @@
 
     <div class="mb-6">
       <swiper ref="carousel" :options="swiperOptions">
-        <swiper-slide v-for="(product, i) in 20" :key="i">
-          <CardProduct name="FORMULA 5W-30" image="/images/products/1.png" />
+        <swiper-slide v-for="(product, i) in products" :key="i">
+          <CardProduct :product="product" image="/images/products/1.png" />
         </swiper-slide>
 
         <div slot="pagination" class="swiper-pagination" />
@@ -24,6 +24,7 @@
 export default {
   data () {
     return {
+      products: [],
       swiperOptions: {
         slidesPerView: 5,
         spaceBetween: 24,
@@ -32,6 +33,18 @@ export default {
         touchStartPreventDefault: false,
       },
     }
+  },
+  mounted () {
+    this.getProducts()
+  },
+  methods: {
+    getProducts () {
+      this.$axios.$get('/products').then((res) => {
+        this.products = res.data
+      }).catch((err) => {
+        console.log(err)
+      })
+    },
   },
 }
 </script>

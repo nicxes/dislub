@@ -1,7 +1,9 @@
 <template>
   <section class="px-4 md:px-6 pb-56">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6 mb-4 md:mb-10">
-      <h1 class="md:hidden text-2xl font-bold uppercase tracking-[1px]">MOBIL DELVAC 1 5W-40</h1>
+      <h1 class="md:hidden text-2xl font-bold uppercase tracking-[1px]">
+        {{ product.name }}
+      </h1>
 
       <div class="image bg-[#FCFCFC] rounded-[36px] p-14 mb-3 md:mb-0">
         <img src="/images/products/5-full.png" alt="" class="mx-auto">
@@ -9,7 +11,9 @@
 
       <div class="flex flex-col justify-between">
         <div>
-          <h1 class="hidden md:block text-[32px] font-bold uppercase tracking-[1px] mb-6">MOBIL DELVAC 1 5W-40</h1>
+          <h1 class="hidden md:block text-[32px] font-bold uppercase tracking-[1px] mb-6">
+            {{ product.name }}
+          </h1>
 
           <ul>
             <li class="mb-2">
@@ -61,7 +65,9 @@
     <div class="mb-6">
       <h5 class="text-[#6E7191] text-[13px] md:text-base font-semibold mb-2">Descripción:</h5>
       <div class="md:text-lg">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus iusto voluptate delectus! Officiis nostrum aliquam veritatis nam, voluptas quaerat explicabo illo pariatur? Sit soluta architecto ex nostrum. Non, quia repellat.</p>
+        <p>
+          {{ product.description }}
+        </p>
       </div>
     </div>
 
@@ -95,6 +101,13 @@
 <script>
 export default {
   layout: 'dashboard',
+  asyncData ({ $axios, route }) {
+    return $axios.get(`/products/${route.params.slug}`).then((res) => {
+      return { product: res.data.data }
+    }).catch((error) => {
+      throw error
+    })
+  },
   data () {
     return {
       quatity: null,

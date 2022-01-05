@@ -1,13 +1,13 @@
 <template>
-  <NuxtLink to="/products/1">
+  <NuxtLink :to="`/products/${product.id}`">
     <article class="Card bg-[#FCFCFC] rounded-2xl border-2 border-input-background hover:border-[#D9DBE9] h-full p-3 md:p-4 cursor-pointer transition duration-300">
       <div class="border-primary-yellow border-b-2 pb-4">
-        <img :src="image" :alt="name" class="mx-auto">
+        <img :src="image" :alt="product.name" class="mx-auto">
       </div>
 
       <div class="mt-4">
         <h5 class="text-[#6E7191] font-semibold uppercase">
-          {{ name }}
+          {{ product.name }}
         </h5>
       </div>
     </article>
@@ -17,8 +17,8 @@
 <script>
 export default {
   props: {
-    name: {
-      type: String,
+    product: {
+      type: Object,
       required: true,
     },
     image: {
