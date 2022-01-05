@@ -1,33 +1,35 @@
 <template>
-  <section class="px-6 pb-20">
-    <div class="grid grid-cols-2 gap-6 mb-10">
-      <div class="image bg-[#FCFCFC] rounded-[36px] p-14">
+  <section class="px-4 md:px-6 pb-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6 mb-4 md:mb-10">
+      <h1 class="md:hidden text-2xl font-bold uppercase tracking-[1px]">MOBIL DELVAC 1 5W-40</h1>
+
+      <div class="image bg-[#FCFCFC] rounded-[36px] p-14 mb-3 md:mb-0">
         <img src="/images/products/5-full.png" alt="" class="mx-auto">
       </div>
 
       <div class="flex flex-col justify-between">
         <div>
-          <h1 class="text-[32px] font-bold uppercase tracking-[1px] mb-6">MOBIL DELVAC 1 5W-40</h1>
+          <h1 class="hidden md:block text-[32px] font-bold uppercase tracking-[1px] mb-6">MOBIL DELVAC 1 5W-40</h1>
 
           <ul>
             <li class="mb-2">
-              <h5 class="text-[#6E7191] font-semibold">Categoría:</h5>
-              <h6 class="text-lg">Lubricante semisintético</h6>
+              <h5 class="text-[#6E7191] text-[13px] md:text-base font-semibold">Categoría:</h5>
+              <h6 class="md:text-lg">Lubricante semisintético</h6>
             </li>
 
             <li class="mb-2">
-              <h5 class="text-[#6E7191] font-semibold">Viscocidad:</h5>
-              <h6 class="text-lg">XXXX</h6>
+              <h5 class="text-[#6E7191] text-[13px] md:text-base font-semibold">Viscocidad:</h5>
+              <h6 class="md:text-lg">XXXX</h6>
             </li>
 
-            <li class="mb-2">
-              <h5 class="text-[#6E7191] font-semibold">Volumen (Lts.)</h5>
-              <h6 class="text-lg">XXXX</h6>
+            <li class="md:mb-2">
+              <h5 class="text-[#6E7191] text-[13px] md:text-base font-semibold">Volumen (Lts.)</h5>
+              <h6 class="md:text-lg">XXXX</h6>
             </li>
           </ul>
         </div>
 
-        <div>
+        <div class="hidden md:block">
           <div class="bg-white py-3 px-4 border-2 border-line rounded-2xl mb-4 flex items-center">
             <button class="border-line border-2 rounded-2xl py-4 px-8 hover:bg-[#EFF0F7] transition duration-300 ease-out" @click="addLess()">
               <img src="/images/icons/minus.svg">
@@ -54,9 +56,11 @@
       </div>
     </div>
 
+    <hr class="border-2 border-line mb-4 md:hidden">
+
     <div class="mb-6">
-      <h5 class="text-[#6E7191] font-semibold">Descripción:</h5>
-      <div class="text-lg">
+      <h5 class="text-[#6E7191] text-[13px] md:text-base font-semibold mb-2">Descripción:</h5>
+      <div class="md:text-lg">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus iusto voluptate delectus! Officiis nostrum aliquam veritatis nam, voluptas quaerat explicabo illo pariatur? Sit soluta architecto ex nostrum. Non, quia repellat.</p>
       </div>
     </div>
