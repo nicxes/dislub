@@ -48,7 +48,7 @@
             </button>
           </div>
 
-          <button class="cta text-white transition duration-300 ease-out bg-primary hover:bg-[#184158] p-4 font-semibold rounded-2xl w-full flex justify-center items-center leading-[34px]">
+          <button class="cta text-white transition duration-300 ease-out bg-primary hover:bg-[#184158] p-4 font-semibold rounded-2xl w-full flex justify-center items-center leading-[34px]" @click="addToCart()">
             Agregar a la cotización actual
             <img src="/images/icons/plus.svg" class="ml-2">
           </button>
@@ -65,7 +65,7 @@
       </div>
     </div>
 
-    <div class="fixed z-40 left-0 right-0 bottom-[80px] w-full">
+    <div class="md:hidden fixed z-40 left-0 right-0 bottom-[80px] w-full">
       <div class="bg-white py-3 px-4 border-t-2 border-line flex items-center">
         <button class="border-line border-2 rounded-2xl py-4 px-8 hover:bg-[#EFF0F7] transition duration-300 ease-out" @click="addLess()">
           <img src="/images/icons/minus.svg">
@@ -84,7 +84,7 @@
         </button>
       </div>
 
-      <button class="cta text-white transition duration-300 ease-out bg-primary hover:bg-[#184158] p-4 font-semibold w-full flex justify-center items-center text-sm leading-[34px]">
+      <button class="cta text-white transition duration-300 ease-out bg-primary hover:bg-[#184158] p-4 font-semibold w-full flex justify-center items-center text-sm leading-[34px]" @click="addToCart()">
         Agregar a la cotización actual
         <img src="/images/icons/plus.svg" class="ml-2">
       </button>
@@ -102,10 +102,16 @@ export default {
   },
   methods: {
     addToCart () {
+      if (!this.quantity)
+        this.addMore()
+
       this.$store.dispatch('cart/add', {
         product: this.$route.params.slug,
-        quantity: this.quatity,
+        quantity: this.quatity || 1,
       })
+
+      console.log(this.$store.state.cart)
+      console.log(this.$store.getters['cart/quantity'])
     },
     addMore () {
       this.quatity++

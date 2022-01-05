@@ -36,7 +36,7 @@
     <div v-if="showCart" class="bg-primary-yellow text-white px-2 py-1 flex flex-col items-center justify-between">
       <div class="flex items-center">
         <img src="/images/icons/cart.svg" class="mr-1">
-        <span class="text-[13px] font-medium">Cotización acutal:</span>
+        <span class="text-[13px] font-medium">Cotización actual:</span>
       </div>
       <span class="text-sm font-semibold leading-[26px]">152 productos</span>
     </div>

@@ -44,7 +44,7 @@
           <img src="/images/icons/cart.svg" class="mr-2">
           Cotización actual:
         </h4>
-        <h5 class="font-semibold text-lg tracking-[0.75px]">2 productos</h5>
+        <h5 class="font-semibold text-lg tracking-[0.75px]">{{ $store.getters['cart/quantity'] }} productos</h5>
       </div>
     </NuxtLink>
   </aside>
