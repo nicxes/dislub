@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->integer('viscocidad')->nullable();
             $table->integer('volume')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
             $table->boolean('active')->default(true);
             $table->timestamps();
             $table->softDeletes();
