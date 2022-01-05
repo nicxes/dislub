@@ -20,6 +20,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('email');
             $table->string('phone')->nullable();
             $table->string('pin')->unique();
+            $table->enum('role', ['ADMIN', 'USER']);
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->boolean('active')->default(true);
