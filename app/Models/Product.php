@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
@@ -15,4 +16,14 @@ class Product extends Model
      * @var string
      */
     protected $table = 'products';
+
+    use SoftDeletes;
+
+    /**
+     * Get the products for the order.
+     */
+    public function orderProducts()
+    {
+        return $this->hasMany(OrderProduct::class);
+    }
 }

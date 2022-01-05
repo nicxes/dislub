@@ -103,6 +103,27 @@ class OrganizationsController extends Controller
     }
 
     /**
+     * Endpoint getting tasks list
+     */
+    public function orders(Request $request)
+    {
+        $organizations = Organization::all();
+
+        foreach ($organizations as $organization) {
+            $total = 0;
+            foreach ($organization->orders()->get() as $order) {
+                foreach ($order->ordersProducts()->get() as $orderProduct) {
+                    $total += $orderProduct->quantity;
+                }
+            }
+
+            $organization['total_products'] = $total;
+        }
+
+        return $this->render($organizations);
+    }
+
+    /**
      * Error response
      */
     public function error(): Response|JsonResponse

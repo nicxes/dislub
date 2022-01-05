@@ -29,6 +29,12 @@ class OrdersController extends Controller
     public function find(Request $request, $id)
     {
         $order = Order::where('id', $id)->first();
+       
+        $order->organization;
+
+        foreach ($order->ordersProducts as $orderProduct) {
+            $orderProduct->product;
+        }
 
         return $this->render($order);
     }

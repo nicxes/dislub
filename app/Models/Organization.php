@@ -15,4 +15,9 @@ class Organization extends Model
      * @var string
      */
     protected $table = 'organizations';
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

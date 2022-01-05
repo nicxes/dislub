@@ -48,6 +48,7 @@ Route::delete('/categories/{id}', [CategoriesController::class, 'destroy'])->nam
 
 // Organizations
 Route::get('/organizations', [OrganizationsController::class, 'index'])->name('getting organizations list');
+Route::get('/organizations/orders', [OrganizationsController::class, 'orders'])->name('getting organizations list with orders');
 Route::get('/organizations/{id}', [OrganizationsController::class, 'find'])->name('getting organization by id');
 Route::get('/organizations/auth/{pin}', [OrganizationsController::class, 'login'])->name('getting organization by pin');
 Route::post('/organizations', [OrganizationsController::class, 'store'])->name('create a new organization');
