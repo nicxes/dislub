@@ -16,7 +16,15 @@ export const getters = {
 
 export const mutations = {
   ADD_TO_CART (state, product) {
-    state.products.push(product)
+    // Check if the product is already on cart
+    const x = state.products.find(p => p.id === product.id)
+
+    // If it is, increment quantity
+    // If it isn't, add it to cart
+    if (x)
+      x.quantity += product.quantity
+    else
+      state.products.push(product)
   },
 }
 

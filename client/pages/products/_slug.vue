@@ -109,9 +109,6 @@ export default {
         product: this.$route.params.slug,
         quantity: this.quatity || 1,
       })
-
-      console.log(this.$store.state.cart)
-      console.log(this.$store.getters['cart/quantity'])
     },
     addMore () {
       this.quatity++

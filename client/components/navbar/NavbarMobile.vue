@@ -38,7 +38,7 @@
         <img src="/images/icons/cart.svg" class="mr-1">
         <span class="text-[13px] font-medium">Cotización actual:</span>
       </div>
-      <span class="text-sm font-semibold leading-[26px]">152 productos</span>
+      <span class="text-sm font-semibold leading-[26px]">{{ $store.getters['cart/quantity'] }} productos</span>
     </div>
   </div>
 </template>
@@ -48,8 +48,12 @@ export default {
   data () {
     return {
       showMenu: false,
-      showCart: true,
     }
+  },
+  computed: {
+    showCart () {
+      return this.$store.getters['cart/quantity'] > 0
+    },
   },
   methods: {
     openMenu () {
