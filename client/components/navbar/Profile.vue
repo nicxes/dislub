@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center">
-    <div class="bg-[#8BC7DA] bg-opacity-25 font-medium py-2 px-4 rounded-[40px] flex items-center">
+    <div v-if="$store.state.user.data.role === 'ADMIN'" class="bg-[#8BC7DA] bg-opacity-25 font-medium py-2 px-4 rounded-[40px] flex items-center">
       <img src="/images/icons/crown.svg" class="mr-2">
       Administrador
     </div>

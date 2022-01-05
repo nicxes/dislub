@@ -19,14 +19,14 @@ class OrganizationSeeder extends Seeder
             [
                 'name' => 'Lubricentro San Cristobal',
                 'pin' => '1234',
-                'rank' => 'ADMIN',
+                'role' => 'ADMIN',
                 'email' => 'paconicolasmiranda@gmail.com',
                 'phone' => '+54 911 5555-5555',
             ],
             [
                 'name' => 'VHGarage',
                 'pin' => '0303',
-                'rank' => 'USER',
+                'role' => 'USER',
                 'email' => 'paconicolasmiranda@gmail.com',
                 'phone' => '+54 911 5555-5555',
             ],

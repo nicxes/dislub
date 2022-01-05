@@ -4,7 +4,7 @@
       Historial de cotizaciones
     </h1>
 
-    <div class="bg-[#FCFCFC] grid grid-cols-1 md:grid-cols-2 items-center gap-2 border-2 border-line rounded-2xl p-2 mb-6">
+    <div v-if="$store.state.user.data.role === 'ADMIN'" class="bg-[#FCFCFC] grid grid-cols-1 md:grid-cols-2 items-center gap-2 border-2 border-line rounded-2xl p-2 mb-6">
       <button class="bg-background text-primary font-medium py-3 rounded-2xl flex items-center justify-center" @click="orderByDate = true">
         Ordenar por fecha
         <img src="/images/icons/calendar.svg" class="ml-2">
@@ -83,7 +83,7 @@ export default {
   layout: 'dashboard',
   data () {
     return {
-      orderByDate: false,
+      orderByDate: true,
       show: true,
       show2: true,
     }

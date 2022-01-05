@@ -25,12 +25,14 @@
         />
 
         <NavigationItem
+          v-if="$store.state.user.data.role === 'ADMIN'"
           icon="users"
           text="Usuarios"
           to="/users"
         />
 
         <NavigationItem
+          v-if="$store.state.user.data.role === 'ADMIN'"
           icon="categories"
           text="Categorías"
           to="/categories"
