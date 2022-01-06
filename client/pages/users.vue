@@ -252,6 +252,29 @@
               </div>
 
               <div class="mb-4">
+                <label for="role" class="text-darked font-medium text-sm leading-[24px] mb-4 block">Rol de usuario:</label>
+                <div class="grid grid-cols-2">
+                  <button class="text-[#A0A3BD] font-medium flex items-center" @click="form.edit.role = 'ADMIN'">
+                    <span class="border-2 border-line w-[24px] h-[24px] rounded-full inline-block mr-2">
+                      <transition name="fade">
+                        <span v-show="form.edit.role === 'ADMIN'" class="bg-primary m-[0.15rem] rounded-full w-[16px] h-[16px] inline-block" />
+                      </transition>
+                    </span>
+                    Administrador
+                  </button>
+
+                  <button class="text-[#A0A3BD] font-medium flex items-center" @click="form.edit.role = 'USER'">
+                    <span class="border-2 border-line w-[24px] h-[24px] rounded-full inline-block mr-2">
+                      <transition name="fade">
+                        <span v-show="form.edit.role === 'USER'" class="bg-primary m-[0.15rem] rounded-full w-[16px] h-[16px] inline-block" />
+                      </transition>
+                    </span>
+                    Cliente
+                  </button>
+                </div>
+              </div>
+
+              <div class="mb-4">
                 <label for="email" class="text-darked font-medium text-sm leading-[24px] mb-1 block">E-mail de contacto:</label>
                 <input v-model="form.edit.email" type="email" placeholder="Ingrese el correo electrónico aquí" class="bg-transparent border-2 border-line rounded-2xl w-full py-3 px-4 focus:ring-0 focus:outline-none focus:shadow-none focus:border-line focus:bg-white">
               </div>
