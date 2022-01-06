@@ -8,9 +8,18 @@
     </div>
 
     <div class="order-3 md:order-2 col-span-3 md:col-span-8">
-      <h4 class="text-darked text-xl md:text-2xl font-bold mb-1">
-        {{ user.name }}
-      </h4>
+      <div class="flex items-center">
+        <h4 class="text-darked text-xl md:text-2xl font-bold mb-1">
+          {{ user.name }}
+        </h4>
+
+        <div v-if="user.role === 'ADMIN'" class="ml-2">
+          <span class="bg-[#8BC7DA] bg-opacity-25 text-[#6E7191] font-medium px-4 py-1 rounded-[40px] flex items-center justify-center">
+            <img src="/images/icons/crown.svg" class="mr-2">
+            Admin
+          </span>
+        </div>
+      </div>
 
       <div class="text-darked font-medium mb-2 flex items-center">
         <span class="text-[13px] md:text-base">{{ user.email }}</span>

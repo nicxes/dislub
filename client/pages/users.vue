@@ -363,7 +363,6 @@ export default {
     getCategories () {
       this.$axios.$get('categories').then((res) => {
         this.categories = res.data
-        console.log(res.data)
       }).catch((err) => {
         console.log(err)
       })
@@ -390,7 +389,8 @@ export default {
         this.form.edit = data
     },
     previewFile (event) {
-      console.log(event)
+      console.log(event.target.files[0])
+      this.form.create.logo = event.target.files[0]
     },
     selectCategory (id) {
       this.form.create.category_id = id

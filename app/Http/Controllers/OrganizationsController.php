@@ -73,6 +73,38 @@ class OrganizationsController extends Controller
     }
 
     /**
+     * Endpoint to upload a logo for a organization
+     */
+    public function upload(Request $request, $id)
+    {
+        $this
+          ->option('logo', 'required|file|image')
+          ->verify();
+
+        $organization = Organization::where('id', $id)->first();
+        
+        if ($organization) {
+            // Sets a new name for the file
+            $file_name = time() . '-' . $request->file('logo')->getClientOriginalName();
+            // Saves the files in the public folder
+            $request->file('logo')->move('public/organizations', 'logo.png');
+            // Sets the path for the file in the database
+            $organization->logo = $file_name;
+            $organization->save();
+
+            return $this->render([
+                'success' => 'true',
+                'message' => 'Logo uploaded'
+            ]);
+        } else {
+            return $this->render([
+                'success' => 'false',
+                'message' => 'Organization not found'
+            ]);
+        }
+    }
+
+    /**
      * Endpoint to update a task
      */
     public function update(Request $request, $id)
