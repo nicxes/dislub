@@ -3,27 +3,18 @@
     <transition name="fade">
       <div v-if="status">
         <div class="grid grid-cols-2 divide-x-2">
-          <div class="pr-8">
-            <h5 class="text-lg mb-4">Lubricante semisintético</h5>
+          <div v-if="$store.getters['cart/quantity'] > 0" class="pr-8">
+            <h5 class="text-lg mb-4">Productos</h5>
 
             <ul class="grid grid-cols-1 gap-4 pb-6 mb-6 border-b-2 border-line">
-              <Order />
-              <Order />
+              <Order v-for="product in $store.state.cart.products" :key="product.id" :product="product" />
             </ul>
+          </div>
 
-            <h5 class="text-lg mb-4">Grasa</h5>
-
-            <ul class="grid grid-cols-1 gap-4 pb-6 mb-6 border-b-2 border-line">
-              <Order />
-              <Order />
-            </ul>
-
-            <h5 class="text-lg mb-4">Grasa</h5>
-
-            <ul class="grid grid-cols-1 gap-4 pb-6 mb-6 border-b-2 border-line">
-              <Order />
-              <Order />
-            </ul>
+          <div v-else class="text-center">
+            <img src="/images/cart.png" class="mx-auto">
+            <h4 class="text-[#4E4B66] font-bold leading-[28px]">¡El carrito está vacío!</h4>
+            <p class="text-[#4E4B66] font-medium leading-[28px]">Agregue productos para poder enviar su cotización.</p>
           </div>
 
           <div class="pl-8">
@@ -32,7 +23,12 @@
 
             <div>
               <div class="relative Email mb-8">
-                <input type="email" placeholder="Indique su e-mail" class="placeholder-input-placeholder-color bg-transparent font-semibold py-4 px-12 border-2 border-line block w-full rounded-2xl focus:ring-0 focus:outline-none focus:border-line hover:bg-[#EFF0F6] focus:bg-[#FCFCFC] transition duration-300 ease-in-out">
+                <input v-model="form.email" type="email" placeholder="Indique su e-mail" class="placeholder-input-placeholder-color bg-transparent placeholder:font-semibold py-4 px-12 border-2 border-line block w-full rounded-2xl focus:ring-0 focus:outline-none focus:border-line hover:bg-[#EFF0F6] focus:bg-[#FCFCFC] transition duration-300 ease-in-out">
+              </div>
+
+              <div class="mb-8">
+                <p class="text-[#14142B] font-medium mb-1">Comentarios (Opcional)</p>
+                <textarea v-model="form.comments" class="placeholder:font-medium placeholder-input-placeholder-color bg-transparent border-2 border-line rounded-2xl px-4 py-3 w-full focus:ring-0 focus:outline-none focus:shadow-none focus:border-line focus:bg-white transition duration-300 ease-in-out" rows="8" placeholder="Si tiene comentarios adicionales, déjelos aquí" />
               </div>
 
               <div>
@@ -76,15 +72,26 @@ export default {
     return {
       status: true,
       success: false,
+      form: {
+        organization_id: this.$store.state.user.data.id,
+        email: this.$store.state.user.data.email,
+        comments: '',
+      },
     }
   },
 
   methods: {
     send () {
-      this.status = false
+      this.$axios.$post('/orders', this.form).then((res) => {
+        console.log(res)
+      }).catch((err) => {
+        console.log(err)
+      })
+
+      /*this.status = false
       setTimeout(() => {
         this.success = true
-      }, 800)
+      }, 800)*/
     },
   },
 

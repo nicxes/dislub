@@ -142,6 +142,10 @@ export default {
       Poppins: [300, 400, 500, 600, 700],
     },
   },
+
+  loading: {
+    color: '#3B89A1',
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/

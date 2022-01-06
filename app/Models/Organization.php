@@ -16,6 +16,13 @@ class Organization extends Model
      */
     protected $table = 'organizations';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['name', 'email', 'phone', 'pin', 'role', 'category_id', 'active', 'last_activity'];
+
     public function orders()
     {
         return $this->hasMany(Order::class);

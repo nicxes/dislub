@@ -40,6 +40,24 @@ class OrdersController extends Controller
     }
 
     /**
+     * Endpoint to create a new order
+     */
+    public function store(Request $request)
+    {
+        $this
+          ->option('organization_id', 'required')
+          ->option('email', 'required|string')
+          ->option('description', 'nullable')
+          ->verify();
+
+        $order = new Order;
+        $order->fill($request->all());
+        $order->save();
+
+        return $this->render($order);
+    }
+
+    /**
      * Endpoint to destroy a order
      */
     public function destroy($id)

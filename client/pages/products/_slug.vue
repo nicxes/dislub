@@ -119,9 +119,11 @@ export default {
         this.addMore()
 
       this.$store.dispatch('cart/add', {
-        product: this.$route.params.slug,
+        ...this.product,
         quantity: this.quatity || 1,
       })
+
+      console.log(this.$store.state.cart.products)
     },
     addMore () {
       this.quatity++

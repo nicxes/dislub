@@ -24,6 +24,7 @@ class CreateOrganizationsTable extends Migration
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->boolean('active')->default(true);
+            $table->dateTime('last_activity')->nullable();
             $table->timestamps();
         });
     }

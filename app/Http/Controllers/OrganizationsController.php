@@ -44,19 +44,26 @@ class OrganizationsController extends Controller
     }
 
     /**
-     * Endpoint to create a task
+     * Endpoint to create a organization
      */
     public function store(Request $request)
     {
         $this
-          ->option('title', 'required|string')
-          ->option('description', 'nullable')
+          ->option('name', 'required|string')
+          ->option('email', 'required|email')
+          ->option('phone', 'string|nullable')
+          ->option('pin', 'required|string')
+          ->option('role', 'required|string')
+          ->option('category_id', 'required|integer')
           ->verify();
 
         $organization = Organization::create([
-            'title' => $request->input('title'),
-            'description' => $request->input('description'),
-            'completed' => $request->input('completed'),
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'pin' => $request->input('pin'),
+            'role' => $request->input('role'),
+            'category_id' => $request->input('category_id'),
         ]);
 
         return $this->render([

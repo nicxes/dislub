@@ -88,6 +88,13 @@ class CategorySeeder extends Seeder
               'name' => 'Otro',
               'type' => 'PRODUCTS',
             ],
+
+            // Organizations
+            [
+              'id' => 15,
+              'name' => 'Lubricentros',
+              'type' => 'ORGANIZATIONS',
+            ],
         ];
 
         foreach($categories as $category) {

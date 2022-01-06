@@ -5,14 +5,14 @@
     </div>
 
     <div class="col-span-4">
-      <h5 class="text-darked font-semibold mb-1 uppercase">MOBIL DELVAC 1 5W-40</h5>
+      <h5 class="text-darked font-semibold mb-1 uppercase">{{ product.name }}</h5>
       <h6 class="text-[#6E7191] text-sm">2 Litros, 40W</h6>
     </div>
 
     <div class="text-center">
       <h5 class="text-[#6E7191] text-sm font-medium mb-1">Cantidad:</h5>
       <span class="text-primary text-lg font-semibold bg-[#EFF0F6] rounded-2xl px-6 py-4 flex items-center justify-center">
-        118
+        {{ product.quantity }}
       </span>
     </div>
 
@@ -31,6 +31,17 @@
     </div>
   </li>
 </template>
+
+<script>
+export default {
+  props: {
+    product: {
+      type: Object,
+      required: true,
+    },
+  },
+}
+</script>
 
 <style scoped>
   .card {
