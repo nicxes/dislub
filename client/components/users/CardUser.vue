@@ -8,12 +8,12 @@
     </div>
 
     <div class="order-3 md:order-2 col-span-3 md:col-span-8">
-      <div class="flex items-center">
+      <div class="flex flex-col-reverse md:flex-row items-start md:items-center">
         <h4 class="text-darked text-xl md:text-2xl font-bold mb-1">
           {{ user.name }}
         </h4>
 
-        <div v-if="user.role === 'ADMIN'" class="ml-2">
+        <div v-if="user.role === 'ADMIN'" class="mb-1 md:ml-2 md:mb-0">
           <span class="bg-[#8BC7DA] bg-opacity-25 text-[#6E7191] font-medium px-4 py-1 rounded-[40px] flex items-center justify-center">
             <img src="/images/icons/crown.svg" class="mr-2">
             Admin
