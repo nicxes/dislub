@@ -33,8 +33,8 @@
     </ul>
 
     <transition name="fade">
-      <div v-if="modal.create" class="fixed z-50 left-0 right-0 top-0 bottom-0 bg-black bg-opacity-30 flex items-center justify-center" @click="toggleModal('create')">
-        <div class="bg-white p-6 rounded-2xl w-full max-w-[870px]" @click.stop>
+      <div v-if="modal.create" class="absolute z-50 left-0 right-0 top-0 bottom-auto md:bottom-0 bg-black bg-opacity-30 flex items-center justify-center" @click="toggleModal('create')">
+        <div class="bg-white p-6 md:rounded-2xl w-full max-w-[870px]" @click.stop>
           <div class="flex items-center justify-between mb-6">
             <h3 class="text-[#14142B] text-2xl font-bold">Crear nuevo usuario</h3>
             <div class="cursor-pointer" @click="toggleModal('create')">
@@ -42,7 +42,7 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-6 mb-9">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-9">
             <div>
               <div class="relative bg-background border-2 border-dashed border-line rounded-2xl py-24 px-4 flex items-center justify-center w-full">
                 <div class="flex items-center justify-center flex-col text-center">
@@ -156,7 +156,7 @@
           </div>
 
           <div class="flex items-center justify-center">
-            <button class="bg-primary text-white rounded-2xl py-4 px-6 font-semibold text-lg flex items-center justify-center" @click="createOrganization()">
+            <button class="bg-primary text-white rounded-2xl py-4 px-6 font-semibold text-sm md:text-lg flex items-center justify-center w-full" @click="createOrganization()">
               Confirmar y crear nuevo usuario
               <img src="/images/icons/check.svg" class="ml-2">
             </button>
@@ -166,8 +166,8 @@
     </transition>
 
     <transition name="fade">
-      <div v-if="modal.edit" class="fixed z-50 left-0 right-0 top-0 bottom-0 bg-black bg-opacity-30 flex items-center justify-center" @click="toggleModal('edit')">
-        <div class="bg-white p-6 rounded-2xl w-full max-w-[870px]" @click.stop>
+      <div v-if="modal.edit" class="absolute z-50 left-0 right-0 top-0 bottom-auto md:bottom-0 bg-black bg-opacity-30 flex items-center justify-center" @click="toggleModal('edit')">
+        <div class="bg-white p-6 md:rounded-2xl w-full max-w-[870px]" @click.stop>
           <div class="flex items-center justify-between mb-6">
             <h3 class="text-[#14142B] text-2xl font-bold">Editar usuario</h3>
             <div class="cursor-pointer" @click="toggleModal('edit')">
@@ -175,7 +175,7 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-6 mb-9">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-9">
             <div>
               <div v-if="form.edit.logo || true" class="border-2 border-line rounded-2xl px-7 py-7 flex items-center justify-center">
                 <img src="/images/dislub-avatar.png" class="w-full">
@@ -292,7 +292,7 @@
           </div>
 
           <div class="flex items-center justify-center">
-            <button class="bg-primary text-white rounded-2xl py-4 px-6 font-semibold text-lg flex items-center justify-center">
+            <button class="bg-primary text-white rounded-2xl py-4 px-6 font-semibold text-lg flex items-center justify-center w-full md:w-auto">
               Confirmar
               <img src="/images/icons/check.svg" class="ml-2">
             </button>
