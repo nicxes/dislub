@@ -7,7 +7,7 @@
     </div>
 
     <div class="flex justify-end">
-      <button class="px-2 md:px-4 py-2 rounded-2xl hover:bg-input-background transition duration-300 ease-out" @click="update()">
+      <button class="px-2 md:px-4 py-2 rounded-2xl hover:bg-input-background transition duration-300 ease-out" @click="$emit('edit')">
         <img src="/images/icons/edit.svg">
       </button>
 
@@ -27,13 +27,6 @@ export default {
     },
   },
   methods: {
-    update () {
-      this.$axios.$put(`/categories/${this.category.id}`).then((res) => {
-        console.log(res)
-      }).catch((err) => {
-        console.log(err)
-      })
-    },
     destroy () {
       this.$axios.$delete(`/categories/${this.category.id}`).then((res) => {
         console.log(res)

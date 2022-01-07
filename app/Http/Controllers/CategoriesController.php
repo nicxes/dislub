@@ -39,6 +39,22 @@ class CategoriesController extends Controller
     }
 
     /**
+     * Endpoint to edit a category
+     */
+    public function update(Request $request, $id)
+    {
+        $this
+          ->option('name', 'required|string')
+          ->option('type', 'required|string')
+          ->verify();
+
+        $category = Category::findOrFail($id);
+        $category->update($request->all());
+
+        return $this->render($category);
+    }
+
+    /**
      * Endpoint to destroy a category
      */
     public function destroy($id)
