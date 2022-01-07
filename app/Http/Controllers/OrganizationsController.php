@@ -6,8 +6,10 @@ use acidjazz\metapi\MetApi;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Mail;
 
 use App\Models\Organization;
+use App\Mail\InviteMailable;
 
 class OrganizationsController extends Controller
 {
@@ -65,6 +67,11 @@ class OrganizationsController extends Controller
             'role' => $request->input('role'),
             'category_id' => $request->input('category_id'),
         ]);
+
+        // Send email
+        $to = $request->input('email');
+        $email = new InviteMailable($request->all());
+        Mail::to($to)->send($email);
 
         return $this->render([
             'success' => 'true',
