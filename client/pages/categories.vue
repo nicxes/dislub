@@ -11,7 +11,7 @@
       </div>
 
       <div class="flex justify-end">
-        <button class="text-white font-medium bg-primary rounded-2xl w-full max-w-sm py-3 flex justify-center items-center">
+        <button class="text-white font-medium bg-primary rounded-2xl w-full max-w-sm py-3 flex justify-center items-center" @click="toggleModal('create')">
           Crear nueva categoría
           <img src="/images/icons/plus.svg" class="ml-2">
         </button>
@@ -23,6 +23,37 @@
         <CardCategory :category="category" @refresh-categories="getCategories" />
       </li>
     </ul>
+
+    <transition name="fade">
+      <div v-if="modal.create" class="absolute z-50 left-0 right-0 top-0 bottom-auto md:bottom-0 bg-black bg-opacity-30 flex items-center justify-center" @click="toggleModal('create')">
+        <div class="bg-white rounded-3xl p-6 max-w-[471px] w-full" @click.stop>
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-[#14142B] text-2xl font-bold">Crear nueva categoría</h3>
+
+            <div class="cursor-pointer" @click="toggleModal('create')">
+              <img src="/images/icons/close.svg">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 mb-9">
+            <div>
+              <label for="name" class="text-darked font-medium text-sm leading-[24px] mb-1 block">
+                Nombre de la categoría:
+              </label>
+
+              <input v-model="form.create.name" type="text" placeholder="Ingrese el nombre aquí" class="bg-transparent border-2 border-line rounded-2xl w-full py-3 px-4 focus:ring-0 focus:outline-none focus:shadow-none focus:border-line focus:bg-white">
+            </div>
+          </div>
+
+          <div class="flex items-center justify-center">
+            <button class="bg-primary text-white rounded-2xl py-4 px-6 font-semibold text-sm md:text-lg flex items-center justify-center w-full" @click="createCategory()">
+              Confirmar y crear nueva categoría
+              <img src="/images/icons/check.svg" class="ml-2">
+            </button>
+          </div>
+        </div>
+      </div>
+    </transition>
   </section>
 </template>
 
@@ -33,6 +64,21 @@ export default {
     return {
       categories: [],
       search: '',
+      modal: {
+        create: false,
+        edit: false,
+        delete: false,
+      },
+      form: {
+        create: {
+          name: '',
+          type: 'PRODUCTS',
+        },
+        edit: {
+          name: '',
+          type: 'PRODUCTS',
+        },
+      },
     }
   },
   computed: {
@@ -48,10 +94,25 @@ export default {
   methods: {
     getCategories () {
       this.$axios.$get('/categories').then((res) => {
-        this.categories = res.data
+        const categories = res.data.filter(category => category.type === 'PRODUCTS')
+        this.categories = categories
       }).catch((err) => {
         console.log(err)
       })
+    },
+    createCategory () {
+      this.$axios.$post('/categories', this.form.create).then(() => {
+        this.getCategories()
+        this.toggleModal('create')
+      }).catch((err) => {
+        console.log(err)
+      })
+    },
+    toggleModal (modal, data) {
+      this.modal[modal] = !this.modal[modal]
+
+      if (data)
+        this.form.edit = data
     },
   },
 }

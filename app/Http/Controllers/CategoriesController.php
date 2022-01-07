@@ -22,9 +22,24 @@ class CategoriesController extends Controller
 
         return $this->render($categories);
     }
+    
+    /**
+     * Endpoint to create a category
+     */
+    public function store(Request $request)
+    {
+        $this
+          ->option('name', 'required|string')
+          ->option('type', 'required|string')
+          ->verify();
+
+        $category = Category::create($request->all());
+
+        return $this->render($category);
+    }
 
     /**
-     * Endpoint to destroy a task
+     * Endpoint to destroy a category
      */
     public function destroy($id)
     {
