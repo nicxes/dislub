@@ -120,6 +120,7 @@ export default {
 
       this.$store.dispatch('cart/add', {
         ...this.product,
+        product_id: this.product.id,
         quantity: this.quatity || 1,
       })
 

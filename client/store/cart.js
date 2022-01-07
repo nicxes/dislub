@@ -26,10 +26,16 @@ export const mutations = {
     else
       state.products.push(product)
   },
+  REMOVE_FROM_CART (state, index) {
+    state.products.splice(index, 1)
+  },
 }
 
 export const actions = {
   add ({ commit }, product) {
     commit('ADD_TO_CART', product)
+  },
+  remove ({ commit }, index) {
+    commit('REMOVE_FROM_CART', index)
   },
 }

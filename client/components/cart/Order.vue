@@ -23,7 +23,7 @@
           Editar cantidad
         </button>
 
-        <button class="text-[#EB5757] font-semibold flex flex-col justify-center items-center ml-2 px-4 py-2 hover:bg-input-placeholder-color transition duration-300 ease-in-out rounded-2xl">
+        <button class="text-[#EB5757] font-semibold flex flex-col justify-center items-center ml-2 px-4 py-2 hover:bg-input-placeholder-color transition duration-300 ease-in-out rounded-2xl" @click="$emit('delete')">
           <img src="/images/icons/trash.svg" class="mb-1">
           Eliminar
         </button>

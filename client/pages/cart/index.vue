@@ -7,7 +7,7 @@
             <h5 class="text-lg mb-4">Productos</h5>
 
             <ul class="grid grid-cols-1 gap-4 pb-6 mb-6 border-b-2 border-line">
-              <Order v-for="product in $store.state.cart.products" :key="product.id" :product="product" />
+              <Order v-for="(product, index) in $store.state.cart.products" :key="product.id" :product="product" @delete="remove(index)" />
             </ul>
           </div>
 
@@ -76,25 +76,27 @@ export default {
         organization_id: this.$store.state.user.data.id,
         email: this.$store.state.user.data.email,
         comments: '',
+        products: this.$store.state.cart.products,
       },
     }
   },
 
   methods: {
     send () {
-      this.$axios.$post('/orders', this.form).then((res) => {
-        console.log(res)
+      this.$axios.$post('/orders', this.form).then(() => {
+        this.status = false
+
+        setTimeout(() => {
+          this.success = true
+        }, 800)
       }).catch((err) => {
         console.log(err)
       })
-
-      /*this.status = false
-      setTimeout(() => {
-        this.success = true
-      }, 800)*/
+    },
+    remove (index) {
+      this.$store.dispatch('cart/remove', index)
     },
   },
-
 }
 </script>
 

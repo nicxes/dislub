@@ -48,10 +48,12 @@ class OrdersController extends Controller
           ->option('organization_id', 'required')
           ->option('email', 'required|string')
           ->option('description', 'nullable')
+          ->option('products', 'required|array|min:1')
           ->verify();
 
         $order = new Order;
         $order->fill($request->all());
+        $order->ordersProducts()->createMany($request->input('products'));
         $order->save();
 
         return $this->render($order);
