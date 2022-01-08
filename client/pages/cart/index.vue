@@ -77,6 +77,7 @@ export default {
         email: this.$store.state.user.data.email,
         comments: '',
         products: this.$store.state.cart.products,
+        total_products: this.$store.getters['cart/quantity'],
       },
     }
   },

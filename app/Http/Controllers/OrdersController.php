@@ -6,8 +6,10 @@ use acidjazz\metapi\MetApi;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Mail;
 
 use App\Models\Order;
+use App\Mail\OrderMailable;
 
 class OrdersController extends Controller
 {
@@ -49,12 +51,20 @@ class OrdersController extends Controller
           ->option('email', 'required|string')
           ->option('description', 'nullable')
           ->option('products', 'required|array|min:1')
+          ->option('total_products', 'required|integer')
           ->verify();
 
         $order = new Order;
         $order->fill($request->all());
-        $order->ordersProducts()->createMany($request->input('products'));
         $order->save();
+
+        // Create products on order_products
+        $order->ordersProducts()->createMany($request->input('products'));
+
+        // Send email
+        $to = 'dislub@xlns.xyz';
+        $email = new OrderMailable($request->all());
+        Mail::to($to)->send($email);
 
         return $this->render($order);
     }
