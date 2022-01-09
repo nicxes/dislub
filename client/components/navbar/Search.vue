@@ -5,6 +5,7 @@
       type="search"
       placeholder="Buscá cualquier producto"
       class="py-3 pl-16 pr-6 border-2 bg-[#FCFCFC] border-line rounded-2xl w-96 focus:shadow-none focus:outline-none focus:ring-0 focus:border-line transition duration-300 ease-out"
+      @keyup.enter="searchProduct"
     >
   </div>
 </template>
@@ -15,6 +16,16 @@ export default {
     return {
       search: '',
     }
+  },
+  methods: {
+    searchProduct () {
+      this.$router.push({
+        name: 'products',
+        params: {
+          search: this.search,
+        },
+      })
+    },
   },
 }
 </script>

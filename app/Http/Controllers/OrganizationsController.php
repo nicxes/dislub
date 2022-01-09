@@ -149,7 +149,7 @@ class OrganizationsController extends Controller
     }
 
     /**
-     * Endpoint getting tasks list
+     * Endpoint getting all the orders from all organizations
      */
     public function orders(Request $request)
     {
@@ -167,6 +167,17 @@ class OrganizationsController extends Controller
         }
 
         return $this->render($organizations);
+    }
+    
+    /**
+     * Endpoint getting all the orders from a organization
+     */
+    public function findOrders(Request $request, $id)
+    {
+        $organization = Organization::where('id', $id)->first();
+        $organization = $organization->orders;
+
+        return $this->render($organization);
     }
 
     /**

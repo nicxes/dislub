@@ -35,6 +35,7 @@ export default {
   },
   mounted () {
     this.getProducts()
+    this.search = this.$router.currentRoute.params.search
   },
   methods: {
     getProducts () {

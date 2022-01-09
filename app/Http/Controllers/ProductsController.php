@@ -44,7 +44,7 @@ class ProductsController extends Controller
     }
 
     /**
-     * Endpoint to destroy a task
+     * Endpoint to destroy a product
      */
     public function destroy($id)
     {

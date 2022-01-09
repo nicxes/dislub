@@ -21,7 +21,7 @@ class Order extends Model
      *
      * @var array
      */
-    protected $fillable = ['organization_id', 'comments'];
+    protected $fillable = ['organization_id', 'total_products', 'comments'];
 
     public function organization()
     {

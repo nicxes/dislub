@@ -17,10 +17,24 @@ class OrderSeeder extends Seeder
         // Custom data to store.
         $orders = [
             [
+                'number' => '3021',
                 'organization_id' => 1,
+                'total_products' => 70,
             ],
             [
+                'number' => '3022',
+                'organization_id' => 1,
+                'total_products' => 60,
+            ],
+            [
+                'number' => '3023',
+                'organization_id' => 1,
+                'total_products' => 50,
+            ],
+            [
+                'number' => '3024',
                 'organization_id' => 2,
+                'total_products' => 51,
             ],
         ];
 

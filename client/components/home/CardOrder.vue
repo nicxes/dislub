@@ -12,7 +12,9 @@
         </div>
 
         <div class="flex flex-col md:flex-row items-center bg-[#F7F7FC] md:bg-transparent rounded-2xl py-4 px-3 md:p-0 text-primary font-semibold md:text-lg">
-          <span class="md:mr-1">26</span>
+          <span class="md:mr-1">
+            {{ order.total_products }}
+          </span>
           Productos
           <img src="/images/icons/arrow-right.svg" class="hidden md:inline-block ml-8">
         </div>
@@ -20,6 +22,17 @@
     </NuxtLink>
   </li>
 </template>
+
+<script>
+export default {
+  props: {
+    order: {
+      type: Object,
+      required: true,
+    },
+  },
+}
+</script>
 
 <style scoped>
   .Card:hover {
