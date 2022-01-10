@@ -22,7 +22,7 @@ class OrderMailable extends Mailable
     public function __construct($order)
     {
         $this->order = $order;
-        $this->subject = "Orden #0000 de " . $order->organization->name . " - " . date('d/M/y', strtotime($order->created_at));
+        $this->subject = "Orden #" . $order['id'] . " de " . $order['name'] . " - " . $order['created_at'];
     }
 
     /**

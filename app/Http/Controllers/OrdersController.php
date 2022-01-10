@@ -49,21 +49,32 @@ class OrdersController extends Controller
         $this
           ->option('organization_id', 'required')
           ->option('email', 'required|string')
-          ->option('description', 'nullable')
+          ->option('comments', 'nullable')
           ->option('products', 'required|array|min:1')
           ->option('total_products', 'required|integer')
           ->verify();
 
         $order = new Order;
         $order->fill($request->all());
+        $order->number = rand(1000,9999);
         $order->save();
 
         // Create products on order_products
         $order->ordersProducts()->createMany($request->input('products'));
 
+        $data = [
+            'id' => $order->number,
+            'name' => $order->organization->name,
+            'email' => $request->input('email'),
+            'comments' => $request->input('comments'),
+            'products' => $request->input('products'),
+            'total_products' => $request->input('total_products'),
+            'created_at' => date('d/m/y', strtotime($order->created_at)),
+        ];
+
         // Send email
         $to = 'dislub@xlns.xyz';
-        $email = new OrderMailable($request->all());
+        $email = new OrderMailable($data);
         Mail::to($to)->send($email);
 
         return $this->render($order);

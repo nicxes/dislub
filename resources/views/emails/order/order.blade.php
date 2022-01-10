@@ -473,19 +473,22 @@
                       <td>
                         <h1 style="color: #3B89A1; font-size: 24px; font-weight: 700; margin: 0 0 24px 0;">¡Recibiste una nueva cotización!</h1>
                         
+                        <label style="color: #14142B; font-weight: 500; font-size: 14px; margin: 0 0 4px 0; letter-spacing: 0.75px;">ID:</label>
+                        <p style="color: #14142B; font-weight: 600; margin: 0 0 18px 0; letter-spacing: 0.75px;">{{ $order['id'] }}</p>
+
                         <label style="color: #14142B; font-weight: 500; font-size: 14px; margin: 0 0 4px 0; letter-spacing: 0.75px;">Empresa:</label>
-                        <p style="color: #14142B; font-weight: 600; margin: 0 0 18px 0; letter-spacing: 0.75px;">Ruben Lubricentro</p>
+                        <p style="color: #14142B; font-weight: 600; margin: 0 0 18px 0; letter-spacing: 0.75px;">{{ $order['name'] }}</p>
 
                         <label style="color: #14142B; font-weight: 500; font-size: 14px; margin: 0 0 4px 0; letter-spacing: 0.75px;">Email:</label>
                         <p style="color: #14142B; font-weight: 600; margin: 0 0 18px 0; letter-spacing: 0.75px;">{{ $order['email'] }}</p>
                         
                         <label style="color: #14142B; font-weight: 500; font-size: 14px; margin: 0 0 4px 0; letter-spacing: 0.75px;">Fecha de cotización:</label>
-                        <p style="color: #14142B; font-weight: 600; margin: 0 0 18px 0; letter-spacing: 0.75px;">02/12/2021</p>
+                        <p style="color: #14142B; font-weight: 600; margin: 0 0 18px 0; letter-spacing: 0.75px;">{{ $order['created_at'] }}</p>
                         
                         <label style="color: #14142B; font-weight: 500; font-size: 14px; margin: 0 0 4px 0; letter-spacing: 0.75px;">Total productos:</label>
                         <p style="color: #14142B; font-weight: 600; margin: 0 0 18px 0; letter-spacing: 0.75px;">{{ $order['total_products'] }}</p>
 
-                        <label style="color: #14142B; font-weight: 500; font-size: 14px; margin: 0 0 4px 0; letter-spacing: 0.75px;">Comments:</label>
+                        <label style="color: #14142B; font-weight: 500; font-size: 14px; margin: 0 0 4px 0; letter-spacing: 0.75px;">Comentarios:</label>
                         @if($order['comments'])
                           <p style="color: #14142B; font-weight: 600; margin: 0 0 18px 0; letter-spacing: 0.75px;">{{ $order['comments'] }}</p>
                         @else
