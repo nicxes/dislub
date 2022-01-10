@@ -35,9 +35,14 @@ export default {
   },
   mounted () {
     this.getProducts()
-    this.search = this.$router.currentRoute.params.search
+    this.getSlug()
   },
   methods: {
+    getSlug () {
+      const search = this.$router.currentRoute.params.search
+
+      search ? this.search = search : this.search = ''
+    },
     getProducts () {
       this.$axios.$get('/products').then((res) => {
         this.products = res.data
