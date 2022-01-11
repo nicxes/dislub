@@ -50,6 +50,9 @@ export default {
           1600: {
             slidesPerView: 6,
           },
+          1920: {
+            slidesPerView: 7,
+          },
         },
       },
     }
