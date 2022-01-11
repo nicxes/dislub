@@ -1,8 +1,8 @@
 <template>
-  <section class="py-12">
+  <section class="py-12" :style="`max-width: ${w}px`">
     <h3 class="text-darked text-2xl md:text-3xl font-bold md:text-center mb-4 tracking-[1px]">Productos</h3>
 
-    <div class="mb-6">
+    <div class="relative mb-6">
       <swiper ref="carousel" :options="swiperOptions">
         <swiper-slide v-for="(product, i) in products" :key="i">
           <CardProduct :product="product" image="/images/products/1.png" />
@@ -22,6 +22,12 @@
 
 <script>
 export default {
+  props: {
+    w: {
+      type: Number,
+      default: 0,
+    },
+  },
   data () {
     return {
       products: [],
