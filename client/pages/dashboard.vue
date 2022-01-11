@@ -15,13 +15,18 @@ export default {
     }
   },
   mounted () {
-    this.width = window.innerWidth - 270.859
-    this.width = this.width - 40
-
+    this.setWidth()
     window.addEventListener('resize', (e) => {
-      this.width = window.innerWidth - 270.859
-      this.width = this.width - 40
+      this.setWidth()
     })
+  },
+  methods: {
+    setWidth () {
+      if (window.innerWidth > 426) {
+        this.width = window.innerWidth - 270.859
+        this.width = this.width - 40
+      }
+    },
   },
 }
 </script>

@@ -39,9 +39,15 @@ export default {
         touchStartPreventDefault: false,
         breakpoints: {
           768: {
-            slidesPerView: 4,
+            slidesPerView: 3,
           },
           1024: {
+            slidesPerView: 4,
+          },
+          1440: {
+            slidesPerView: 5,
+          },
+          1600: {
             slidesPerView: 6,
           },
         },
