@@ -94,6 +94,8 @@ export default {
         presetOverriding: true,
       },
     ],
+    // https://github.com/nuxt-community/moment-module
+    '@nuxtjs/moment',
   ],
 
   scriptSetup: {
@@ -145,6 +147,11 @@ export default {
 
   loading: {
     color: '#3B89A1',
+  },
+
+  moment: {
+    defaultLocale: 'es',
+    locales: ['es'],
   },
   /*
   ** Build configuration

@@ -136,9 +136,7 @@
 
         <transition name="fade">
           <ul v-show="show" class="grid grid-cols-1 gap-4">
-            <OrderCardByDate />
-            <OrderCardByDate />
-            <OrderCardByDate />
+            <OrderCardByDate v-for="order in orders" :key="order.id" :order="order" />
           </ul>
         </transition>
       </div>
@@ -152,9 +150,24 @@ export default {
   data () {
     return {
       orderByDate: true,
+      orders: [],
       show: true,
       show2: true,
     }
+  },
+  mounted () {
+    this.getOrders()
+  },
+  methods: {
+    getOrders () {
+      this.$axios.get(`/organizations/orders/${this.$store.state.user.data.id}`)
+        .then((res) => {
+          this.orders = res.data.data
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
   },
 }
 </script>

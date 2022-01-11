@@ -1,6 +1,6 @@
 <template>
   <li class="md:border-b-2 md:border-line pb-4 md:py-4">
-    <NuxtLink to="/cart">
+    <NuxtLink :to="'/orders/' + order.id">
       <article class="Card flex items-center justify-between p-4 md:p-6 border-2 border-[#EFF0F6] md:border-transparent md:hover:border-[#EFF0F7] rounded-2xl bg-white md:bg-transparent md:hover:bg-white transition duration-300 cursor-pointer">
         <div>
           <h5 class="text-darked md:text-lg font-semibold mb-1 md:mb-2 cutted">Viernes 3 de Diciembre</h5>
