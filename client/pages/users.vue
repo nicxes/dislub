@@ -9,7 +9,7 @@
         <input
           v-model="search"
           type="search"
-          class="bg-white border-2 border-line focus:border-line focus:shadow-none focus:ring-0 rounded-2xl py-3 px-6 pl-16 w-full block ga"
+          class="bg-white placeholder-[#A0A3BD] border-2 border-line focus:border-line focus:shadow-none focus:ring-0 rounded-2xl py-3 px-6 pl-16 w-full block ga"
           placeholder="Buscá por nombre o e-mail"
         >
       </div>

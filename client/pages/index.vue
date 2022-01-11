@@ -53,9 +53,9 @@
     </transition>
 
     <transition name="fade">
-      <div v-show="form.success">
-        <h1 class="text-darked text-2xl md:text-4xl font-bold mb-6">
-          ¡Bienvenido {{ organzation }}!
+      <div v-show="form.success" class="px-4">
+        <h1 class="text-darked text-2xl md:text-4xl text-center font-bold mb-6">
+          ¡Bienvenido {{ organization }}!
         </h1>
 
         <div class="flex">

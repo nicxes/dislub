@@ -44,7 +44,7 @@
               min="0"
               type="number"
               placeholder="Cantidad"
-              class="bg-transparent border-0 focus:outline-none focus:shadow-none focus:ring-0 mx-auto block text-center text-lg font-semibold text-input-placeholder-color hide-numeric"
+              class="bg-transparent border-0 focus:outline-none focus:shadow-none focus:ring-0 mx-auto block text-center text-lg font-semibold placeholder-[#A0A3BD] text-[#4E4B66] hide-numeric"
             >
 
             <button class="border-line border-2 rounded-2xl py-4 px-8 hover:bg-[#EFF0F7] transition duration-300 ease-out" @click="addMore()">
@@ -52,7 +52,7 @@
             </button>
           </div>
 
-          <button class="cta text-white transition duration-300 ease-out bg-primary hover:bg-[#184158] p-4 font-semibold rounded-2xl w-full flex justify-center items-center leading-[34px]" @click="addToCart()">
+          <button class="cta text-white transition duration-300 ease-out bg-primary hover:bg-[#184158] px-4 py-[19px] text-lg leading-[18px] font-semibold rounded-2xl w-full flex justify-center items-center" @click="addToCart()">
             Agregar a la cotización actual
             <img src="/images/icons/plus.svg" class="ml-2">
           </button>
@@ -82,7 +82,7 @@
           min="0"
           type="number"
           placeholder="Cantidad"
-          class="max-w-[120px] bg-transparent border-0 focus:outline-none focus:shadow-none focus:ring-0 mx-auto block text-center text-sm md:text-lg font-semibold text-input-placeholder-color hide-numeric"
+          class="max-w-[120px] bg-transparent border-0 focus:outline-none focus:shadow-none focus:ring-0 mx-auto block text-center text-sm md:text-lg font-semibold placeholder-[#A0A3BD] text-[#4E4B66] hide-numeric"
         >
 
         <button class="border-line border-2 rounded-2xl py-4 px-8 hover:bg-[#EFF0F7] transition duration-300 ease-out" @click="addMore()">
