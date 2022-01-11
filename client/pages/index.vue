@@ -81,7 +81,7 @@ export default {
   },
   data () {
     return {
-      organzation: null,
+      organization: null,
       form: {
         code: '',
         complete: false,
@@ -122,7 +122,7 @@ export default {
             path: '/',
             expires: new Date(Date.now() + 60 * 60 * 24 * 30 * 1000),
           })
-          this.organzation = res.data.data.name
+          this.organization = res.data.data.name
 
           setTimeout(() => {
             this.form.success = true
