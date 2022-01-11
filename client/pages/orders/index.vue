@@ -1,5 +1,5 @@
 <template>
-  <section class="px-6 pb-28 md:pb-4">
+  <section class="px-4 md:px-6 pb-28 md:pb-4">
     <h1 class="text-black font-bold text-2xl md:hidden leading-[32px] tracking-[1px] mb-4">
       Historial de cotizaciones
     </h1>

@@ -1,5 +1,5 @@
 <template>
-  <section class="px-6 pb-20">
+  <section class="px-4 md:px-6 pb-20">
     <transition name="fade">
       <div v-if="status">
         <div class="grid grid-cols-2 divide-x-2">
