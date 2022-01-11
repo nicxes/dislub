@@ -32,9 +32,15 @@
               </div>
 
               <div>
-                <button class="bg-primary text-white font-semibold text-lg leading-[34px] w-full py-4 rounded-2xl flex items-center justify-center" @click="send()">
+                <button
+                  class="bg-primary text-white font-semibold text-lg leading-[34px] w-full py-4 rounded-2xl flex items-center justify-center"
+                  :class="{ '!bg-line text-input-placeholder-color cursor-not-allowed' : !form.email || form.products.length === 0 }"
+                  :disabled="!form.email || form.products.length === 0"
+                  @click="send()"
+                >
                   Enviar cotización
-                  <img src="/images/icons/send.svg" class="ml-2">
+                  <img v-if="!form.email || form.products.length === 0" src="/images/icons/send-disabled.svg" class="ml-2">
+                  <img v-else src="/images/icons/send.svg" class="ml-2">
                 </button>
               </div>
             </div>
