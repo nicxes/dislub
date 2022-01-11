@@ -7,7 +7,13 @@
             <h5 class="text-lg mb-4">Productos</h5>
 
             <ul class="grid grid-cols-1 gap-4 pb-6 mb-6 border-b-2 border-line">
-              <Order v-for="(product, index) in $store.state.cart.products" :key="product.id" :product="product" @delete="remove(index)" />
+              <Order
+                v-for="(product, index) in $store.state.cart.products"
+                :key="product.id"
+                :product="product"
+                @update="toggleModal('edit', { index, product })"
+                @delete="remove(index)"
+              />
             </ul>
           </div>
 
@@ -67,6 +73,46 @@
         </div>
       </div>
     </transition>
+
+    <transition name="fade">
+      <div v-if="modal.edit" class="fixed z-50 left-0 right-0 top-0 bottom-0 bg-black bg-opacity-30 flex items-end md:items-center justify-center" @click="toggleModal('edit')">
+        <div class="bg-white rounded-t-3xl md:rounded-3xl p-6 max-w-[604px] w-full" @click.stop>
+          <div class="text-center mb-6">
+            <h3 class="text-[#14142B] text-2xl font-bold">Editar cantidad:</h3>
+          </div>
+
+          <div class="mb-4">
+            <div class="bg-white p-1 border-2 border-line rounded-2xl flex items-center max-w-[303px] mx-auto">
+              <button class="border-line border-2 rounded-[8px] p-1 hover:bg-[#EFF0F7] transition duration-300 ease-out" @click="addLess()">
+                <img src="/images/icons/minus.svg">
+              </button>
+
+              <input
+                v-model="modal.data.quantity"
+                min="0"
+                type="number"
+                placeholder="Cantidad"
+                class="max-w-[140px] bg-transparent border-0 focus:outline-none focus:shadow-none focus:ring-0 mx-auto block text-center text-sm md:text-lg font-semibold placeholder-[#A0A3BD] text-[#4E4B66] hide-numeric"
+              >
+
+              <button class="border-line border-2 rounded-[8px] p-1 hover:bg-[#EFF0F7] transition duration-300 ease-out" @click="addMore()">
+                <img src="/images/icons/plus-2.svg">
+              </button>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-center">
+            <button class="bg-primary hover:bg-[#184158] border-2 border-primary text-white rounded-2xl py-[14px] px-[22px] font-semibold text-sm md:text-lg flex items-center justify-center transition duration-300 ease-out mr-4" @click="setQuantity()">
+              Confirmar
+            </button>
+
+            <button class="bg-transparent hover:border-[#184158] hover:text-[#184158] border-2 border-primary text-primary rounded-2xl py-[14px] px-[22px] font-semibold text-sm md:text-lg leading-[18px] flex items-center justify-center transition duration-300 ease-out" @click="toggleModal('edit')">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </transition>
   </section>
 </template>
 
@@ -78,6 +124,12 @@ export default {
     return {
       status: true,
       success: false,
+      modal: {
+        edit: false,
+        delete: false,
+        index: null,
+        data: null,
+      },
       form: {
         organization_id: this.$store.state.user.data.id,
         email: this.$store.state.user.data.email,
@@ -103,6 +155,31 @@ export default {
     remove (index) {
       this.$store.dispatch('cart/remove', index)
     },
+    addMore () {
+      this.modal.data.quantity++
+    },
+    addLess () {
+      if (this.modal.data.quantity > 1)
+        this.modal.data.quantity--
+    },
+    setQuantity () {
+      this.$store.dispatch('cart/setQuantity', {
+        index: this.modal.index,
+        quantity: parseInt(this.modal.data.quantity),
+      })
+      this.toggleModal('edit')
+    },
+    toggleModal (modal, data) {
+      this.modal[modal] = !this.modal[modal]
+
+      if (data) {
+        this.modal.index = data.index
+        this.modal.data = Object.assign({}, data.product)
+      } else {
+        this.modal.index = null
+        this.modal.data = null
+      }
+    },
   },
 }
 </script>
@@ -123,5 +200,12 @@ export default {
   }
   .Email input:hover {
     filter: none;
+  }
+  .hide-numeric::-webkit-outer-spin-button, .hide-numeric::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .hide-numeric[type=number] {
+    -moz-appearance: textfield;
   }
 </style>

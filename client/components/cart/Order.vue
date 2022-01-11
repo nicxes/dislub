@@ -18,7 +18,7 @@
 
     <div class="absolute top-0 right-0 left-0 bottom-0 h-full w-full z-10 bg-line flex items-center justify-center rounded-2xl opacity-0 hover:opacity-100 transition duration-300 ease-in-out cursor-pointer">
       <ul class="flex items-center justify-center">
-        <button class="text-[#4E4B66] font-semibold flex flex-col justify-center items-center mr-2 px-4 py-2 hover:bg-input-placeholder-color transition duration-300 ease-in-out rounded-2xl">
+        <button class="text-[#4E4B66] font-semibold flex flex-col justify-center items-center mr-2 px-4 py-2 hover:bg-input-placeholder-color transition duration-300 ease-in-out rounded-2xl" @click="$emit('update')">
           <img src="/images/icons/edit.svg" class="mb-1">
           Editar cantidad
         </button>

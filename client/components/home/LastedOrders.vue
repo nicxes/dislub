@@ -7,7 +7,7 @@
     </ul>
 
     <div v-if="orders.length > 0" class="flex justify-center">
-      <NuxtLink to="/orders" class="text-primary font-semibold border-primary border-2 rounded-[40px] hover:bg-primary hover:text-white px-4 py-4 w-96 block text-center transition duration-300">
+      <NuxtLink to="/orders" class="text-primary font-semibold border-primary border-2 rounded-[40px] hover:border-[#184158] hover:text-[#184158] px-4 py-4 w-96 block text-center transition duration-300">
         Ver historial completo
       </NuxtLink>
     </div>

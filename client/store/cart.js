@@ -29,6 +29,15 @@ export const mutations = {
   REMOVE_FROM_CART (state, index) {
     state.products.splice(index, 1)
   },
+  ADD_QUANTITY (state, index) {
+    state.products[index].quantity++
+  },
+  LESS_QUANTITY (state, index) {
+    state.products[index].quantity--
+  },
+  SET_QUANTITY (state, { index, quantity }) {
+    state.products[index].quantity = quantity
+  },
 }
 
 export const actions = {
@@ -37,5 +46,16 @@ export const actions = {
   },
   remove ({ commit }, index) {
     commit('REMOVE_FROM_CART', index)
+  },
+
+  // Quantity methods
+  addQuantity ({ commit }, index) {
+    commit('ADD_QUANTITY', index)
+  },
+  lessQuantity ({ commit }, index) {
+    commit('LESS_QUANTITY', index)
+  },
+  setQuantity ({ commit }, { index, quantity }) {
+    commit('SET_QUANTITY', { index, quantity })
   },
 }
