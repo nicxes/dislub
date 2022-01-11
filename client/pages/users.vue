@@ -1,5 +1,5 @@
 <template>
-  <section class="px-4 md:px-6 pb-20">
+  <section class="px-4 md:px-6 pb-28 md:pb-20">
     <h1 class="md:hidden text-2xl font-bold text-black mb-4">
       Usuarios de la plataforma
     </h1>
