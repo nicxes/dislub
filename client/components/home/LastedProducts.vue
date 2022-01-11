@@ -26,11 +26,19 @@ export default {
     return {
       products: [],
       swiperOptions: {
-        slidesPerView: 5,
+        slidesPerView: 2,
         spaceBetween: 24,
         preventClicks: false,
         preventClicksPropagation: false,
         touchStartPreventDefault: false,
+        breakpoints: {
+          768: {
+            slidesPerView: 4,
+          },
+          1024: {
+            slidesPerView: 6,
+          },
+        },
       },
     }
   },
@@ -48,3 +56,10 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+  .swiper-slide {
+    height: auto;
+    max-height: 270px;
+  }
+</style>
