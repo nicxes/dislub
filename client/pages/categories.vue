@@ -11,7 +11,7 @@
       </div>
 
       <div class="flex justify-end">
-        <button class="text-white font-medium bg-primary rounded-2xl w-full max-w-sm py-3 flex justify-center items-center" @click="toggleModal('create')">
+        <button class="text-white font-medium bg-primary hover:bg-[#184158] rounded-2xl w-full max-w-sm py-3 flex justify-center items-center transition duration-300 ease-out" @click="toggleModal('create')">
           Crear nueva categoría
           <img src="/images/icons/plus.svg" class="ml-2">
         </button>
@@ -50,7 +50,7 @@
           </div>
 
           <div class="flex items-center justify-center">
-            <button class="bg-primary text-white rounded-2xl py-4 px-6 font-semibold text-sm md:text-lg flex items-center justify-center w-full" @click="createCategory()">
+            <button class="bg-primary hover:bg-[#184158] text-white rounded-2xl py-4 px-6 font-semibold text-sm md:text-lg flex items-center justify-center w-full transition duration-300 ease-out" @click="createCategory()">
               Confirmar y crear nueva categoría
               <img src="/images/icons/check.svg" class="ml-2 w-[12px] h-[12px] md:w-auto md:h-auto">
             </button>
@@ -81,7 +81,7 @@
           </div>
 
           <div class="flex items-center justify-center">
-            <button class="bg-primary text-white rounded-2xl py-4 px-6 font-semibold text-sm md:text-lg flex items-center justify-center w-full" @click="editCategory()">
+            <button class="bg-primary hover:bg-[#184158] text-white rounded-2xl py-4 px-6 font-semibold text-sm md:text-lg flex items-center justify-center w-full md:w-auto transition duration-300 ease-out" @click="editCategory()">
               Confirmar
               <img src="/images/icons/check.svg" class="ml-2 w-[12px] h-[12px] md:w-auto md:h-auto">
             </button>

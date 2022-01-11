@@ -13,7 +13,7 @@
     </div>
 
     <div class="flex justify-center">
-      <NuxtLink to="/products" class="text-background font-semibold bg-primary rounded-[40px] px-4 py-4 w-96 block text-center">
+      <NuxtLink to="/products" class="text-background font-semibold bg-primary hover:bg-[#184158] rounded-[40px] px-4 py-4 w-96 block text-center transition duration-300 ease-out">
         Ver todos los productos
       </NuxtLink>
     </div>

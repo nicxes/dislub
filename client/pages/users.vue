@@ -15,7 +15,7 @@
       </div>
 
       <div class="md:col-start-11 md:col-span-2 md:flex md:justify-end order-1 md:order-2">
-        <button class="bg-primary text-white text-[13px] md:text-base font-semibold rounded-2xl flex items-center justify-center p-4 w-full md:w-auto" @click="toggleModal('create')">
+        <button class="bg-primary hover:bg-[#184158] text-white text-[13px] md:text-base font-semibold rounded-2xl flex items-center justify-center p-4 w-full md:w-auto transition duration-300 ease-out" @click="toggleModal('create')">
           Crear un nuevo usuario
           <img src="/images/icons/user-white.svg" class="ml-2 h-3 w-3 md:w-auto md:h-auto">
         </button>
@@ -156,7 +156,7 @@
           </div>
 
           <div class="flex items-center justify-center">
-            <button class="bg-primary text-white rounded-2xl py-4 px-6 font-semibold text-sm md:text-lg flex items-center justify-center w-full" @click="createOrganization()">
+            <button class="bg-primary hover:bg-[#184158] text-white rounded-2xl py-4 px-6 font-semibold text-sm md:text-lg flex items-center justify-center w-full md:w-auto transition duration-300 ease-out" @click="createOrganization()">
               Confirmar y crear nuevo usuario
               <img src="/images/icons/check.svg" class="ml-2">
             </button>
@@ -292,7 +292,7 @@
           </div>
 
           <div class="flex items-center justify-center">
-            <button class="bg-primary text-white rounded-2xl py-4 px-6 font-semibold text-lg flex items-center justify-center w-full md:w-auto">
+            <button class="bg-primary hover:bg-[#184158] text-white rounded-2xl py-4 px-6 font-semibold text-lg flex items-center justify-center w-full md:w-auto transition duration-300 ease-out">
               Confirmar
               <img src="/images/icons/check.svg" class="ml-2">
             </button>
