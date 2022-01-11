@@ -4,18 +4,18 @@
       Usuarios de la plataforma
     </h1>
 
-    <div class="grid grid-cols-1 md:grid-cols-12 mb-6 gap-y-6">
-      <div class="Search relative md:col-span-5 order-2 md:order-1">
+    <div class="grid grid-cols-1 md:grid-cols-2 mb-6 gap-6">
+      <div class="Search relative order-2 md:order-1">
         <input
           v-model="search"
           type="search"
           class="bg-white border-2 border-line focus:border-line focus:shadow-none focus:ring-0 rounded-2xl py-3 px-6 pl-16 w-full block ga"
-          placeholder="Buscá por nombre"
+          placeholder="Buscá por nombre o e-mail"
         >
       </div>
 
-      <div class="md:col-start-11 md:col-span-2 md:flex md:justify-end order-1 md:order-2">
-        <button class="bg-primary hover:bg-[#184158] text-white text-[13px] md:text-base font-semibold rounded-2xl flex items-center justify-center p-4 w-full md:w-auto transition duration-300 ease-out" @click="toggleModal('create')">
+      <div class="md:flex md:justify-end order-1 md:order-2">
+        <button class="bg-primary hover:bg-[#184158] text-white text-[13px] md:text-base font-semibold rounded-2xl flex items-center justify-center p-3 w-full transition duration-300 ease-out" @click="toggleModal('create')">
           Crear un nuevo usuario
           <img src="/images/icons/user-white.svg" class="ml-2 h-3 w-3 md:w-auto md:h-auto">
         </button>
@@ -341,7 +341,7 @@ export default {
   computed: {
     filteredOrganizations () {
       return this.organizations.filter((org) => {
-        return org.name.toLowerCase().match(this.search.toLowerCase())
+        return org.name.toLowerCase().match(this.search.toLowerCase()) || org.email.toLowerCase().match(this.search.toLowerCase())
       })
     },
     filteredCategories () {
