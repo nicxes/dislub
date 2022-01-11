@@ -92,7 +92,27 @@ class CategorySeeder extends Seeder
             // Organizations
             [
               'id' => 15,
-              'name' => 'Lubricentros',
+              'name' => 'Transporte',
+              'type' => 'ORGANIZATIONS',
+            ],
+            [
+              'id' => 16,
+              'name' => 'Lubricentro / Taller / Casa de repuestos',
+              'type' => 'ORGANIZATIONS',
+            ],
+            [
+              'id' => 17,
+              'name' => 'Casa de Motos',
+              'type' => 'ORGANIZATIONS',
+            ],
+            [
+              'id' => 18,
+              'name' => 'Consumidor Final',
+              'type' => 'ORGANIZATIONS',
+            ],
+            [
+              'id' => 19,
+              'name' => 'Otro',
               'type' => 'ORGANIZATIONS',
             ],
         ];
