@@ -39,7 +39,7 @@
 
               <div>
                 <button
-                  class="bg-primary text-white font-semibold text-lg leading-[34px] w-full py-4 rounded-2xl flex items-center justify-center"
+                  class="bg-primary hover:bg-[#184158] text-white font-semibold text-lg leading-[34px] w-full py-4 rounded-2xl flex items-center justify-center transition duration-300 ease-out"
                   :class="{ '!bg-line text-input-placeholder-color cursor-not-allowed' : !form.email || form.products.length === 0 }"
                   :disabled="!form.email || form.products.length === 0"
                   @click="send()"
