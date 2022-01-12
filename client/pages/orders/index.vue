@@ -73,15 +73,26 @@
           </div>
 
           <div>
-            <button class="flex items-center px-3 py-2 text-primary font-semibold text-sm rounded-2xl border-2 border-line hover:bg-line transition duration-300 ease-out" @click="show = !show">
-              <img src="/images/icons/arrow-top.svg" class="mr-0 md:mr-2">
-              <span class="hidden md:inline">Ver menos</span>
+            <button class="flex items-center px-3 py-2 text-primary font-semibold text-sm rounded-2xl border-2 border-line hover:bg-line transition duration-300 ease-out" @click="organization.show = !organization.show">
+              <img
+                src="/images/icons/arrow-top.svg"
+                class="mr-0 md:mr-2 transition duration-300 ease-out"
+                :class="{ 'rotate-180': !organization.show }"
+              >
+
+              <span v-if="organization.show" class="hidden md:inline">
+                Ver menos
+              </span>
+
+              <span v-else class="hidden md:inline">
+                Ver más
+              </span>
             </button>
           </div>
         </div>
 
         <transition name="fade">
-          <ul v-show="show" class="grid grid-cols-1 gap-4">
+          <ul v-show="organization.show" class="grid grid-cols-1 gap-4">
             <OrderCardByClient v-for="order in organization.orders" :key="order.id" :order="order" />
           </ul>
         </transition>
@@ -142,7 +153,13 @@ export default {
     getOrdersFromOrganizations () {
       this.$axios.get('/organizations/orders')
         .then((res) => {
-          this.ordersByOrgs = res.data.data
+          const data = res.data.data
+
+          data.forEach((item) => {
+            item.show = true
+          })
+
+          this.ordersByOrgs = data
         })
         .catch((err) => {
           console.log(err)
