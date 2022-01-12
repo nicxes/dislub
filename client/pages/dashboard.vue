@@ -1,6 +1,6 @@
 <template>
   <section class="px-4 md:px-6">
-    <Carousel />
+    <Carousel :w="width" />
     <LastedProducts :w="width" />
     <LastedOrders />
   </section>

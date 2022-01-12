@@ -40,12 +40,20 @@
               <div>
                 <button
                   class="bg-primary hover:bg-[#184158] text-white font-semibold text-lg leading-[34px] w-full py-4 rounded-2xl flex items-center justify-center transition duration-300 ease-out"
-                  :class="{ '!bg-line text-input-placeholder-color cursor-not-allowed' : !form.email || form.products.length === 0 }"
-                  :disabled="!form.email || form.products.length === 0"
+                  :class="{ '!bg-line text-input-placeholder-color cursor-not-allowed' : !form.email || form.products.length === 0, '!bg-input-placeholder-color text-[#FCFCFC] cursor-not-allowed' : loading }"
+                  :disabled="!form.email || form.products.length === 0 || loading"
                   @click="send()"
                 >
-                  Enviar cotización
-                  <img v-if="!form.email || form.products.length === 0" src="/images/icons/send-disabled.svg" class="ml-2">
+                  <span v-if="!loading">
+                    Enviar cotización
+                  </span>
+
+                  <span v-else>
+                    Cargando
+                  </span>
+
+                  <img v-if="(!form.email || form.products.length === 0) && !loading" src="/images/icons/send-disabled.svg" class="ml-2">
+                  <img v-else-if="(form.email || form.products.length >= 1) && loading" src="/images/icons/loading.svg" class="ml-2 animate-spin">
                   <img v-else src="/images/icons/send.svg" class="ml-2">
                 </button>
               </div>
@@ -124,6 +132,7 @@ export default {
     return {
       status: true,
       success: false,
+      loading: false,
       modal: {
         edit: false,
         delete: false,
@@ -142,13 +151,17 @@ export default {
 
   methods: {
     send () {
+      this.loading = true
+
       this.$axios.$post('/orders', this.form).then(() => {
         this.status = false
 
         setTimeout(() => {
           this.success = true
+          this.loading = false
         }, 800)
       }).catch((err) => {
+        this.loading = false
         console.log(err)
       })
     },
