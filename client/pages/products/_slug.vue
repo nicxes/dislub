@@ -54,7 +54,7 @@
 
           <button
             class="cta text-white transition duration-300 ease-out bg-primary hover:bg-[#184158] px-4 py-[19px] text-lg leading-[18px] font-semibold rounded-2xl w-full flex justify-center items-center"
-            :class="{ '!bg-input-placeholder-color text-[#FCFCFC] cursor-wait' : loading }"
+            :class="{ '!bg-input-placeholder-color text-[#FCFCFC] cursor-not-allowed' : loading }"
             :disabled="loading"
             @click="addToCart()"
           >
@@ -105,7 +105,7 @@
 
       <button
         class="cta text-white transition duration-300 ease-out bg-primary hover:bg-[#184158] p-4 font-semibold w-full flex justify-center items-center text-sm leading-[34px]"
-        :class="{ '!bg-input-placeholder-color text-[#FCFCFC] cursor-wait' : loading }"
+        :class="{ '!bg-input-placeholder-color text-[#FCFCFC] cursor-not-allowed' : loading }"
         :disabled="loading"
         @click="addToCart()"
       >
