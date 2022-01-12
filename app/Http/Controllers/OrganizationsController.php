@@ -46,6 +46,23 @@ class OrganizationsController extends Controller
     }
 
     /**
+     * Endpoint to verify the pin creation
+     */
+    public function checks(Request $request, $pin)
+    {
+        $organization = Organization::where('pin', $pin)->first();
+
+        return $this->render($organization ? [
+            'success' => false,
+            'message' => 'PIN already used'
+        ] : [
+            'success' => true,
+            'message' => 'PIN available'
+        ]);
+    }
+
+
+    /**
      * Endpoint to create a organization
      */
     public function store(Request $request)

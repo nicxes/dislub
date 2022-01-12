@@ -150,7 +150,18 @@
 
               <div class="mb-4">
                 <label for="pin" class="text-darked font-medium text-sm leading-[24px] mb-1 block">PIN:</label>
-                <input v-model="form.create.pin" type="password" placeholder="Ingrese el PIN de ingreso de 4 dígitos" class="bg-transparent border-2 border-line rounded-2xl w-full py-3 px-4 focus:ring-0 focus:outline-none focus:shadow-none focus:border-line focus:bg-white">
+                <input
+                  v-model="form.create.pin"
+                  type="password"
+                  placeholder="Ingrese el PIN de ingreso de 4 dígitos"
+                  class="bg-transparent border-2 border-line rounded-2xl w-full py-3 px-4 focus:ring-0 focus:outline-none focus:shadow-none focus:border-line focus:bg-white"
+                  :class="{ '!border-[#6FCF97] !bg-[#27AE60] !bg-opacity-10' : verify.success, '!bg-[#EB5757] !border-[#EB5757] !bg-opacity-10' : !verify.success && !verify.waiting }"
+                  :disabled="verify.loading"
+                  maxlength="4"
+                >
+                <span class="text-[#EB5757] text-sm font-medium mt-1 opacity-0 transition duration-300 ease-out" :class="{ 'opacity-100' : !verify.success && !verify.waiting }">
+                  El PIN que ingresaste ya está en uso
+                </span>
               </div>
             </div>
           </div>
@@ -312,6 +323,11 @@ export default {
       categories: [],
       search: '',
       select: false,
+      verify: {
+        waiting: true,
+        loading: false,
+        success: false,
+      },
       modal: {
         create: false,
         edit: false,
@@ -346,6 +362,29 @@ export default {
     },
     filteredCategories () {
       return this.categories.filter(category => category.type === 'ORGANIZATIONS')
+    },
+    pin () {
+      return this.form.create.pin
+    },
+  },
+  watch: {
+    pin () {
+      if (this.pin.length === 4) {
+        this.verify.loading = true
+
+        this.$axios.$get('organizations/verify/' + this.pin).then((res) => {
+          this.verify.success = res.data.success
+          this.verify.loading = false
+          this.verify.waiting = false
+        }).catch((err) => {
+          this.verify.loading = false
+          this.verify.waiting = false
+          console.log(err)
+        })
+      } else {
+        this.verify.waiting = true
+        this.verify.success = false
+      }
     },
   },
   mounted () {

@@ -23,6 +23,13 @@ class Organization extends Model
      */
     protected $fillable = ['logo', 'name', 'email', 'phone', 'pin', 'role', 'category_id', 'active', 'last_activity'];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = ['pin'];
+
     public function orders()
     {
         return $this->hasMany(Order::class);

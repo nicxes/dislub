@@ -52,6 +52,7 @@ Route::get('/organizations/orders', [OrganizationsController::class, 'orders'])-
 Route::get('/organizations/orders/{id}', [OrganizationsController::class, 'findOrders'])->name('getting organizations list with orders');
 Route::get('/organizations/{id}', [OrganizationsController::class, 'find'])->name('getting organization by id');
 Route::get('/organizations/auth/{pin}', [OrganizationsController::class, 'login'])->name('getting organization by pin');
+Route::get('/organizations/verify/{pin}', [OrganizationsController::class, 'checks'])->name('verify the pin if is exists');
 Route::post('/organizations', [OrganizationsController::class, 'store'])->name('create a new organization');
 Route::put('/organizations/{id}', [OrganizationsController::class, 'update'])->name('update an organization');
 Route::delete('/organizations/{id}', [OrganizationsController::class, 'destroy'])->name('destroy a organization');
