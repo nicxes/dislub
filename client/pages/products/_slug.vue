@@ -52,9 +52,22 @@
             </button>
           </div>
 
-          <button class="cta text-white transition duration-300 ease-out bg-primary hover:bg-[#184158] px-4 py-[19px] text-lg leading-[18px] font-semibold rounded-2xl w-full flex justify-center items-center" @click="addToCart()">
-            Agregar a la cotización actual
-            <img src="/images/icons/plus.svg" class="ml-2">
+          <button
+            class="cta text-white transition duration-300 ease-out bg-primary hover:bg-[#184158] px-4 py-[19px] text-lg leading-[18px] font-semibold rounded-2xl w-full flex justify-center items-center"
+            :class="{ '!bg-input-placeholder-color text-[#FCFCFC] cursor-wait' : loading }"
+            :disabled="loading"
+            @click="addToCart()"
+          >
+            <span v-if="!loading">
+              Agregar a la cotización actual
+            </span>
+
+            <span v-else>
+              Cargando
+            </span>
+
+            <img v-if="!loading" src="/images/icons/plus.svg" class="ml-2">
+            <img v-else src="/images/icons/loading.svg" class="ml-2 animate-spin">
           </button>
         </div>
       </div>
@@ -90,9 +103,22 @@
         </button>
       </div>
 
-      <button class="cta text-white transition duration-300 ease-out bg-primary hover:bg-[#184158] p-4 font-semibold w-full flex justify-center items-center text-sm leading-[34px]" @click="addToCart()">
-        Agregar a la cotización actual
-        <img src="/images/icons/plus.svg" class="ml-2">
+      <button
+        class="cta text-white transition duration-300 ease-out bg-primary hover:bg-[#184158] p-4 font-semibold w-full flex justify-center items-center text-sm leading-[34px]"
+        :class="{ '!bg-input-placeholder-color text-[#FCFCFC] cursor-wait' : loading }"
+        :disabled="loading"
+        @click="addToCart()"
+      >
+        <span v-if="!loading">
+          Agregar a la cotización actual
+        </span>
+
+        <span v-else>
+          Cargando
+        </span>
+
+        <img v-if="!loading" src="/images/icons/plus.svg" class="ml-2">
+        <img v-else src="/images/icons/loading.svg" class="ml-2 animate-spin">
       </button>
     </div>
   </section>
@@ -110,6 +136,7 @@ export default {
   },
   data () {
     return {
+      loading: false,
       quatity: null,
     }
   },
@@ -118,13 +145,22 @@ export default {
       if (!this.quantity)
         this.addMore()
 
-      this.$store.dispatch('cart/add', {
-        ...this.product,
-        product_id: this.product.id,
-        quantity: this.quatity || 1,
-      })
+      this.loading = true
 
-      console.log(this.$store.state.cart.products)
+      setTimeout(() => {
+        const audio = new Audio('/sounds/pop.mp3')
+        audio.play()
+      }, 1500)
+
+      setTimeout(() => {
+        this.$store.dispatch('cart/add', {
+          ...this.product,
+          product_id: this.product.id,
+          quantity: this.quatity || 1,
+        })
+
+        this.loading = false
+      }, 2000)
     },
     addMore () {
       this.quatity++
