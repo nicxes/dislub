@@ -155,6 +155,7 @@ class OrganizationsController extends Controller
     {
         $organizations = Organization::all();
 
+        // Return how much products in total has already order
         foreach ($organizations as $organization) {
             $total = 0;
             foreach ($organization->orders()->get() as $order) {
@@ -164,6 +165,11 @@ class OrganizationsController extends Controller
             }
 
             $organization['total_products'] = $total;
+        }
+
+        // Return all the orders for each organization
+        foreach ($organizations as $organization) {
+            $organization = $organization->orders;
         }
 
         return $this->render($organizations);

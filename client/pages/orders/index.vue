@@ -60,7 +60,7 @@
     </div>
 
     <div v-if="!orderByDate">
-      <div class="mb-7">
+      <div v-for="organization in ordersByOrgs" :key="organization.id" class="mb-7">
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center">
             <img
@@ -68,7 +68,7 @@
               class="h-8 w-8 rounded-lg border-2 border-line bg-white p-1 mr-2"
             >
             <span class="text-darked text-lg font-semibold">
-              Lubricentro San Cristobal
+              {{ organization.name }}
             </span>
           </div>
 
@@ -82,38 +82,7 @@
 
         <transition name="fade">
           <ul v-show="show" class="grid grid-cols-1 gap-4">
-            <OrderCardByClient />
-            <OrderCardByClient />
-            <OrderCardByClient />
-          </ul>
-        </transition>
-      </div>
-
-      <div>
-        <div class="flex items-center justify-between mb-4">
-          <div class="flex items-center">
-            <img
-              src="https://scontent.fepa8-2.fna.fbcdn.net/v/t1.18169-9/22730494_1499839286771311_6711186237223725316_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=ygORrRK8X0gAX-XECJX&_nc_ht=scontent.fepa8-2.fna&oh=00_AT_mnllb8pogoOM7TdI9R12xAeQCVs64FE3DupqHmzKb6A&oe=61E28664"
-              class="h-8 w-8 rounded-lg border-2 border-line bg-white p-1 mr-2"
-            >
-            <span class="text-darked text-lg font-semibold">
-              Lubricentro San Cristobal
-            </span>
-          </div>
-
-          <div>
-            <button class="flex items-center px-3 py-2 text-primary font-semibold text-sm rounded-2xl border-2 border-line hover:bg-line transition duration-300 ease-out" @click="show2 = !show2">
-              <img src="/images/icons/arrow-top.svg" class="mr-0 md:mr-2">
-              <span class="hidden md:inline">Ver menos</span>
-            </button>
-          </div>
-        </div>
-
-        <transition name="fade">
-          <ul v-show="show2" class="grid grid-cols-1 gap-4">
-            <OrderCardByClient />
-            <OrderCardByClient />
-            <OrderCardByClient />
+            <OrderCardByClient v-for="order in organization.orders" :key="order.id" :order="order" />
           </ul>
         </transition>
       </div>
@@ -151,18 +120,29 @@ export default {
     return {
       orderByDate: true,
       orders: [],
+      ordersByOrgs: [],
       show: true,
       show2: true,
     }
   },
   mounted () {
     this.getOrders()
+    this.getOrdersFromOrganizations()
   },
   methods: {
     getOrders () {
       this.$axios.get(`/organizations/orders/${this.$store.state.user.data.id}`)
         .then((res) => {
           this.orders = res.data.data
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    getOrdersFromOrganizations () {
+      this.$axios.get('/organizations/orders')
+        .then((res) => {
+          this.ordersByOrgs = res.data.data
         })
         .catch((err) => {
           console.log(err)
