@@ -2,7 +2,7 @@
   <div class="flex items-center">
     <button
       v-if="$router.currentRoute.name === 'products-slug' || $router.currentRoute.name === 'orders-slug'"
-      class="text-primary text-[14px] font-semibold leading-[24px] px-3 py-[14px] border-2 rounded-2xl hover:bg-[#EFF0F6] hover:border-[#EFF0F6] border-line transition duration-300 ease-out mr-4 flex items-center"
+      class="text-primary text-[14px] font-semibold leading-[24px] px-3 py-3 border-2 rounded-2xl hover:bg-[#EFF0F6] hover:border-[#EFF0F6] border-line transition duration-300 ease-out mr-4 flex items-center"
       @click="$router.go(-1)"
     >
       <img src="/images/icons/back.svg" class="mr-2">
