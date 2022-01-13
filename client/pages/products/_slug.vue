@@ -150,7 +150,7 @@ export default {
       setTimeout(() => {
         const audio = new Audio('/sounds/pop.mp3')
         audio.play()
-      }, 1500)
+      }, 250)
 
       setTimeout(() => {
         this.$store.dispatch('cart/add', {
@@ -160,7 +160,7 @@ export default {
         })
 
         this.loading = false
-      }, 2000)
+      }, 750)
     },
     addMore () {
       this.quatity++
