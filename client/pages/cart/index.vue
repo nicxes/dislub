@@ -159,6 +159,10 @@ export default {
         setTimeout(() => {
           this.success = true
           this.loading = false
+
+          const audio = new Audio('/sounds/check.mp3')
+          audio.volume = 0.3
+          audio.play()
         }, 800)
       }).catch((err) => {
         this.loading = false
