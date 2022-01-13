@@ -6,12 +6,12 @@
           v-model="search"
           type="search"
           placeholder="Buscá por nombre"
-          class="w-full md:w-96 py-3 pl-16 pr-6 text-input-placeholder-color border-2 bg-[#FCFCFC] border-line rounded-2xl focus:shadow-none focus:outline-none focus:ring-0 focus:border-line transition duration-300 ease-out"
+          class="w-full py-3 pl-16 pr-6 text-input-placeholder-color border-2 bg-[#FCFCFC] border-line rounded-2xl focus:shadow-none focus:outline-none focus:ring-0 focus:border-line transition duration-300 ease-out"
         >
       </div>
 
       <div class="flex justify-end">
-        <button class="text-white font-medium bg-primary hover:bg-[#184158] rounded-2xl w-full max-w-sm py-3 flex justify-center items-center transition duration-300 ease-out" @click="toggleModal('create')">
+        <button class="text-white font-medium bg-primary hover:bg-[#184158] rounded-2xl w-full py-3 flex justify-center items-center transition duration-300 ease-out" @click="toggleModal('create')">
           Crear nueva categoría
           <img src="/images/icons/plus.svg" class="ml-2">
         </button>
