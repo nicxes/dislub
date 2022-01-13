@@ -1,7 +1,7 @@
 <template>
   <section class="px-4 md:px-6 pb-64 md:pb-0">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6 mb-4 md:mb-10"> 
-      <div class="flex mb-2 md:hidden" :class="{ 'mt-4' : $store.getters['cart/quantity'] < 1 }">
+      <div class="flex mb-2 md:hidden">
         <button
           class="text-primary text-[14px] font-semibold leading-[24px] p-2 border-2 rounded-2xl hover:bg-[#EFF0F6] hover:border-[#EFF0F6] border-line transition duration-300 ease-out mr-4 flex items-center"
           @click="$router.go(-1)"

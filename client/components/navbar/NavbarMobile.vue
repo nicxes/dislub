@@ -1,5 +1,5 @@
 <template>
-  <div class="md:hidden sticky top-0 left-0 right-0 z-40">
+  <div class="md:hidden sticky top-0 left-0 right-0 z-40 mb-4">
     <nav class="bg-white border-b border-[#D9DBE9] px-4 py-3 flex items-center justify-between">
       <div>
         <NuxtLink to="/">
