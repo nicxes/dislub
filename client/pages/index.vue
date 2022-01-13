@@ -1,7 +1,7 @@
 <template>
   <main class="h-fullscreen flex items-center justify-center">
     <transition name="fade">
-      <div v-show="!form.complete" class="container mx-auto text-center">
+      <div v-show="!form.complete" class="container mx-auto text-center py-12">
         <h1 class="text-darked text-2xl md:text-3xl font-bold mb-6">
           Ingresá tu PIN de 4 dígitos
         </h1>
@@ -149,6 +149,6 @@ export default {
 
 <style scoped>
   .h-fullscreen {
-    height: calc( 100vh - 97px );
+    min-height: calc( 100vh - 97px );
   }
 </style>
