@@ -15,7 +15,7 @@
       </div>
 
       <div class="md:flex md:justify-end order-1 md:order-2">
-        <button class="bg-primary hover:bg-[#184158] text-white text-[13px] md:text-base font-semibold rounded-2xl flex items-center justify-center p-3 w-full transition duration-300 ease-out" @click="toggleModal('create')">
+        <button class="bg-primary hover:bg-[#184158] text-white text-[13px] md:text-base font-medium rounded-2xl flex items-center justify-center p-3 w-full transition duration-300 ease-out" @click="toggleModal('create')">
           Crear un nuevo usuario
           <img src="/images/icons/user-white.svg" class="ml-2 h-3 w-3 md:w-auto md:h-auto">
         </button>
