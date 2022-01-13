@@ -40,15 +40,7 @@
       </ul>
     </div>
 
-    <NuxtLink to="/cart">
-      <div class="bg-primary-yellow text-white rounded-xl px-3 py-3">
-        <h4 class="font-medium text-sm mb-1 flex items-center">
-          <img src="/images/icons/cart.svg" class="mr-2">
-          Cotización actual:
-        </h4>
-        <h5 class="font-semibold text-lg tracking-[0.75px]">{{ $store.getters['cart/quantity'] }} productos</h5>
-      </div>
-    </NuxtLink>
+    <Profile />
   </aside>
 </template>
 

@@ -1,13 +1,8 @@
 <template>
   <div class="flex items-center">
-    <div v-if="$store.state.user.data.role === 'ADMIN'" class="bg-[#8BC7DA] bg-opacity-25 font-medium py-2 px-4 rounded-[40px] flex items-center">
-      <img src="/images/icons/crown.svg" class="mr-2">
-      Administrador
-    </div>
-
-    <div class="Profile relative ml-2">
+    <div class="Profile relative mr-4">
       <div class="relative w-12 h-12 flex items-center justify-center bg-yellow-200 font-bold rounded-full cursor-pointer" @click="openMenu()">
-        PM
+        {{ initials }}
       </div>
 
       <transition name="fade">
@@ -29,6 +24,11 @@
         </div>
       </transition>
     </div>
+
+    <div v-if="$store.state.user.data.role === 'ADMIN'" class="bg-[#8BC7DA] bg-opacity-25 font-medium py-2 px-4 rounded-[40px] flex items-center">
+      <img src="/images/icons/crown.svg" class="mr-2">
+      Admin
+    </div>
   </div>
 </template>
 
@@ -38,6 +38,11 @@ export default {
     return {
       menu: false,
     }
+  },
+  computed: {
+    initials () {
+      return this.$store.state.user.data.name.split(' ')[0].charAt(0).toUpperCase()
+    },
   },
   methods: {
     openMenu () {
