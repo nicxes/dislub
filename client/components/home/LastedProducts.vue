@@ -1,6 +1,7 @@
 <template>
   <section class="py-12" :style="`max-width: ${w}px`">
-    <h3 class="text-darked text-2xl md:text-3xl font-bold md:text-center mb-4 tracking-[1px]">Productos</h3>
+    <h3 v-if="title" class="text-darked text-2xl md:text-3xl font-bold md:text-center mb-4 tracking-[1px]">Productos</h3>
+    <h5 v-else class="text-[#6E7191] text-[13px] md:text-base font-semibold mb-4 text-center">Más productos similares:</h5>
 
     <div class="relative mb-6">
       <swiper ref="carousel" :options="swiperOptions">
@@ -12,7 +13,7 @@
       </swiper>
     </div>
 
-    <div class="flex justify-center">
+    <div v-if="button" class="flex justify-center">
       <NuxtLink to="/products" class="text-background font-semibold bg-primary hover:bg-[#184158] rounded-[40px] px-4 py-4 w-96 block text-center transition duration-300 ease-out">
         Ver todos los productos
       </NuxtLink>
@@ -26,6 +27,14 @@ export default {
     w: {
       type: Number,
       default: 0,
+    },
+    title: {
+      type: Boolean,
+      default: true,
+    },
+    button: {
+      type: Boolean,
+      default: true,
     },
   },
   data () {

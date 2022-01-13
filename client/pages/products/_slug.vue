@@ -1,6 +1,16 @@
 <template>
-  <section class="px-4 md:px-6 pb-56">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6 mb-4 md:mb-10">
+  <section class="px-4 md:px-6 pb-64 md:pb-0">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6 mb-4 md:mb-10"> 
+      <div class="flex mb-2" :class="{ 'mt-4' : $store.getters['cart/quantity'] < 1 }">
+        <button
+          class="md:hidden text-primary text-[14px] font-semibold leading-[24px] p-2 border-2 rounded-2xl hover:bg-[#EFF0F6] hover:border-[#EFF0F6] border-line transition duration-300 ease-out mr-4 flex items-center"
+          @click="$router.go(-1)"
+        >
+          <img src="/images/icons/back.svg" class="mr-2">
+          Volver
+        </button>
+      </div>
+
       <h1 class="md:hidden text-2xl font-bold uppercase tracking-[1px]">
         {{ product.name }}
       </h1>
@@ -84,6 +94,10 @@
       </div>
     </div>
 
+    <div class="hidden md:block border-t-2 border-line mt-12">
+      <LastedProducts :w="width" :title="false" :button="false" />
+    </div>
+
     <div class="md:hidden fixed z-40 left-0 right-0 bottom-[80px] w-full">
       <div class="bg-white py-3 px-4 border-t-2 border-line flex items-center">
         <button class="border-line border-2 rounded-2xl py-4 px-8 hover:bg-[#EFF0F7] transition duration-300 ease-out" @click="addLess()">
@@ -138,9 +152,22 @@ export default {
     return {
       loading: false,
       quatity: null,
+      width: null,
     }
   },
+  mounted () {
+    this.setWidth()
+    window.addEventListener('resize', (e) => {
+      this.setWidth()
+    })
+  },
   methods: {
+    setWidth () {
+      if (window.innerWidth > 426) {
+        this.width = window.innerWidth - 270.859
+        this.width = this.width - 40
+      }
+    },
     addToCart () {
       if (!this.quantity)
         this.addMore()
