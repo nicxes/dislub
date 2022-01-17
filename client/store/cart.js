@@ -41,6 +41,10 @@ export const mutations = {
   SET_QUANTITY (state, { index, quantity }) {
     state.products[index].quantity = quantity
   },
+
+  SET_TOTAL (state, total) {
+    state.quantity = total
+  },
 }
 
 export const actions = {
@@ -63,5 +67,10 @@ export const actions = {
   },
   setQuantity ({ commit }, { index, quantity }) {
     commit('SET_QUANTITY', { index, quantity })
+  },
+
+  // Total Methods
+  setTotal ({ commit }, total) {
+    commit('SET_TOTAL', total)
   },
 }

@@ -144,21 +144,35 @@ export default {
         email: this.$store.state.user.data.email,
         comments: '',
         products: this.$store.state.cart.products,
-        total_products: this.$store.getters['cart/quantity'],
       },
     }
   },
+  computed: {
+    totalProducts () {
+      let total = 0
 
+      this.$store.state.cart.products.forEach((product) => {
+        total += product.quantity
+      })
+
+      return total
+    },
+  },
   methods: {
     send () {
       this.loading = true
+      const data = {
+        ...this.form,
+        total_products: this.totalProducts,
+      }
 
-      this.$axios.$post('/orders', this.form).then(() => {
+      this.$axios.$post('/orders', data).then(() => {
         this.status = false
 
         setTimeout(() => {
           this.success = true
           this.loading = false
+          this.$store.dispatch('cart/clean')
 
           const audio = new Audio('/sounds/check.mp3')
           audio.volume = 0.3
@@ -184,6 +198,9 @@ export default {
         index: this.modal.index,
         quantity: parseInt(this.modal.data.quantity),
       })
+
+      this.updateQuantity()
+
       this.toggleModal('edit')
     },
     toggleModal (modal, data) {
@@ -196,6 +213,10 @@ export default {
         this.modal.index = null
         this.modal.data = null
       }
+    },
+    updateQuantity () {
+      this.$store.dispatch('cart/setTotal', 123)
+      console.log(this.totalProducts)
     },
   },
 }

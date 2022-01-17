@@ -101,17 +101,10 @@
 
     <div v-else>
       <div class="mb-7">
-        <div class="flex items-center justify-between mb-4">
+        <div class="mb-4">
           <h5 class="text-darked text-lg font-semibold">
-            Enero 2022
+            Recientes
           </h5>
-
-          <div>
-            <button class="flex items-center px-3 py-2 text-primary font-semibold text-sm rounded-2xl border-2 border-line hover:bg-line transition duration-300 ease-out" @click="show = !show">
-              <img src="/images/icons/arrow-top.svg" class="mr-0 md:mr-2">
-              <span class="hidden md:inline">Ver menos</span>
-            </button>
-          </div>
         </div>
 
         <transition name="fade">
