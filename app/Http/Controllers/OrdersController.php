@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Mail;
 
 use App\Models\Order;
 use App\Mail\OrderMailable;
+use App\Mail\OrderConfirmMailable;
 
 class OrdersController extends Controller
 {
@@ -72,9 +73,14 @@ class OrdersController extends Controller
             'created_at' => date('d/m/y', strtotime($order->created_at)),
         ];
 
-        // Send email
+        // Send email to dislub staff
         $to = 'dislub@xlns.xyz';
         $email = new OrderMailable($data);
+        Mail::to($to)->send($email);
+
+        // Send email to the client as confirmation
+        $to = $request->input('email');
+        $email = new OrderConfirmMailable($data);
         Mail::to($to)->send($email);
 
         return $this->render($order);
