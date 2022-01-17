@@ -23,7 +23,7 @@
               </li>
               <li
                 class="text-[#6E7191] hover:text-darked hover:bg-line rounded-lg px-2 py-1 transition duration-300 ease-out cursor-pointer"
-                @click="help()"
+                @click="$store.commit('recovery/toggle')"
               >
                 Ayuda
               </li>

@@ -2,6 +2,7 @@
   <div class="relative min-h-screen flex">
     <Navigation />
     <NavigationMobile />
+    <ModalRecovery />
     <div class="w-full">
       <NavbarLogged />
       <NavbarMobile />
