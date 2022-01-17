@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#FCFCFC] border-2 border-line rounded-2xl p-4 grid grid-cols-3 md:grid-cols-12 gap-y-2 items-center">
+  <div class="bg-[#FCFCFC] border-2 border-line rounded-2xl p-4 grid grid-cols-3 md:grid-cols-12 xl:grid-cols-10 2xl:grid-cols-12 gap-y-2 items-center">
     <div class="col-span-1">
       <img
         :src="user.logo || '/images/dislub-avatar.png'"
@@ -7,7 +7,7 @@
       >
     </div>
 
-    <div class="order-3 md:order-2 col-span-3 md:col-span-8">
+    <div class="order-3 md:order-2 col-span-3 md:col-span-8 xl:col-span-6 2xl:col-span-8">
       <div class="flex flex-col-reverse md:flex-row items-start md:items-center">
         <h4 class="text-darked text-xl md:text-2xl font-bold mb-1">
           {{ user.name }}
