@@ -1,7 +1,7 @@
 <template>
   <section class="px-4 md:px-6 pb-20">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-9">
-      <div class="Search relative col-span-2">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 pb-6 md:pb-0 border-b-2 md:border-0 border-[#D9DBE9] mb-6 md:mb-9">
+      <div class="Search relative md:col-span-2">
         <input v-model="search" type="search" placeholder="Buscá cualquier producto" class="w-full rounded-2xl border-2 border-line py-3 pl-16 pr-6 placeholder-[#A0A3BD] bg-[#FCFCFC] focus:shadow-none focus:outline-none focus:ring-0 focus:border-line transition duration-300 ease-out">
       </div>
 
@@ -12,11 +12,16 @@
           aria-haspopup="listbox"
           aria-expanded="true"
           aria-labelledby="listbox-label"
-          @click="select = !select"
+          @click="category = !category"
         >
-          <span class="flex items-center">
+          <span v-if="selectedCategory === 'Todas'" class="flex items-center">
             Categoría
           </span>
+
+          <span v-else class="flex items-center">
+            {{ nameCategorySelected.name }}
+          </span>
+
           <span class="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
             <!-- Heroicon name: solid/selector -->
             <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -27,33 +32,33 @@
 
         <transition name="fade">
           <ul
-            v-if="select"
-            class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
+            v-if="category"
+            class="absolute z-10 mt-1 w-full bg-[#EFF0F7] shadow-lg rounded-2xl p-3 text-base border-2 border-[#D9DBE9] overflow-auto focus:outline-none"
             tabindex="-1"
             role="listbox"
             aria-labelledby="listbox-label"
             aria-activedescendant="listbox-option-3"
           >
             <li
-              v-for="category in filteredCategories"
               id="listbox-option-0"
-              :key="category.id"
-              class="cursor-pointer select-none relative py-2 pl-3 pr-9"
-              :class="{ 'bg-primary text-white': form.create.category_id === category.id }"
+              class="cursor-pointer select-none relative py-1 px-2 rounded-lg text-lg leading-[34px] text-[#6E7191] hover:bg-[#D9DBE9] hover:text-darked transition duration-300 ease-out mb-1"
+              :class="{ 'bg-[#D9DBE9] text-darked': selectedCategory === 'Todas' }"
               role="option"
-              @click="selectCategory(category.id)"
+              @click="selectedCategory = 'Todas'"
             >
-              <div class="flex items-center">
-                <span class="ml-3 block truncate" :class="{ 'font-semibold' : form.create.category_id === category.id }">
-                  {{ category.name }}
-                </span>
-              </div>
+              Todas
+            </li>
 
-              <span v-if="form.create.category_id === category.id" class="text-white absolute inset-y-0 right-0 flex items-center pr-4">
-                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                </svg>
-              </span>
+            <li
+              v-for="(item) in filteredCategories"
+              id="listbox-option-0"
+              :key="item.id"
+              class="cursor-pointer select-none relative py-1 px-2 rounded-lg text-lg leading-[34px] text-[#6E7191] hover:bg-[#D9DBE9] hover:text-darked transition duration-300 ease-out mb-1"
+              :class="{ 'bg-[#D9DBE9] text-darked': selectedCategory === item.id }"
+              role="option"
+              @click="selectedCategory = item.id"
+            >
+              {{ item.name }}
             </li>
           </ul>
         </transition>
@@ -66,11 +71,16 @@
           aria-haspopup="listbox"
           aria-expanded="true"
           aria-labelledby="listbox-label"
-          @click="select = !select"
+          @click="industry = !industry"
         >
-          <span class="flex items-center">
+          <span v-if="selectedIndustry === 'Todas'" class="flex items-center">
             Industria
           </span>
+
+          <span v-else class="flex items-center">
+            {{ selectedIndustry }}
+          </span>
+
           <span class="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
             <!-- Heroicon name: solid/selector -->
             <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -81,47 +91,42 @@
 
         <transition name="fade">
           <ul
-            v-if="select"
-            class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
+            v-if="industry"
+            class="absolute z-10 mt-1 w-full bg-[#EFF0F7] shadow-lg rounded-2xl p-3 text-base border-2 border-[#D9DBE9] overflow-auto focus:outline-none"
             tabindex="-1"
             role="listbox"
             aria-labelledby="listbox-label"
             aria-activedescendant="listbox-option-3"
           >
             <li
-              v-for="category in filteredCategories"
+              v-for="(item, index) in industries"
               id="listbox-option-0"
-              :key="category.id"
-              class="cursor-pointer select-none relative py-2 pl-3 pr-9"
-              :class="{ 'bg-primary text-white': form.create.category_id === category.id }"
+              :key="index"
+              class="cursor-pointer select-none relative py-1 px-2 rounded-lg text-lg leading-[34px] text-[#6E7191] hover:bg-[#D9DBE9] hover:text-darked transition duration-300 ease-out mb-1"
+              :class="{ 'bg-[#D9DBE9] text-darked': selectedIndustry === item }"
               role="option"
-              @click="selectCategory(category.id)"
+              @click="selectedIndustry = item"
             >
-              <div class="flex items-center">
-                <span class="ml-3 block truncate" :class="{ 'font-semibold' : form.create.category_id === category.id }">
-                  {{ category.name }}
-                </span>
-              </div>
-
-              <span v-if="form.create.category_id === category.id" class="text-white absolute inset-y-0 right-0 flex items-center pr-4">
-                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                </svg>
-              </span>
+              {{ item }}
             </li>
           </ul>
         </transition>
       </div>
     </div>
 
-    <ul class="grid grid-cols-2 md:grid-cols-7 gap-y-4 gap-x-5 md:gap-6">
+    <ul v-if="searchByProductName.length > 0" class="grid grid-cols-2 md:grid-cols-7 gap-y-4 gap-x-5 md:gap-6">
       <CardProduct
-        v-for="(product, i) in filteredProducts"
+        v-for="(product, i) in searchByProductName"
         :key="i"
         :product="product"
         :image="`images/products/${randomInt(1, 4)}.png`"
       />
     </ul>
+
+    <div v-else class="flex items-center justify-center flex-col max-w-[538px] mx-auto mt-6">
+      <img src="/images/notfound.png" class="mb-4">
+      <h3 class="text-darked text-2xl font-bold leading-[32px] text-center">No se encontraron resultados para la búsqueda</h3>
+    </div>
   </section>
 </template>
 
@@ -132,14 +137,41 @@ export default {
     return {
       products: [],
       categories: [],
+      industries: [
+        'Todas',
+        'Aviación',
+        'Servicios pesados',
+        'Industrias',
+        'Marítimo',
+        'Motos',
+        'Automotor',
+      ],
       search: '',
+
+      // Dropdowns
+      category: false,
+      industry: false,
+
+      selectedIndustry: 'Todas',
+      selectedCategory: 'Todas',
     }
   },
   computed: {
     filteredProducts () {
       return this.products.filter((product) => {
+        return (product.category_id === this.selectedCategory || this.selectedCategory === 'Todas') && (product.industry === this.selectedIndustry || this.selectedIndustry === 'Todas')
+      })
+    },
+    searchByProductName () {
+      return this.filteredProducts.filter((product) => {
         return product.name.toLowerCase().match(this.search.toLowerCase())
       })
+    },
+    filteredCategories () {
+      return this.categories.filter(category => category.type === 'PRODUCTS')
+    },
+    nameCategorySelected () {
+      return this.categories.find(category => category.id === this.selectedCategory)
     },
   },
   mounted () {
