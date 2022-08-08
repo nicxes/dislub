@@ -32,7 +32,7 @@ class OrdersController extends Controller
     public function find(Request $request, $id)
     {
         $order = Order::where('id', $id)->first();
-       
+
         $order->organization;
 
         foreach ($order->ordersProducts as $orderProduct) {
@@ -74,7 +74,7 @@ class OrdersController extends Controller
         ];
 
         // Send email to dislub staff
-        $to = 'dislub@xlns.xyz';
+        $to = 'ventas@dislub.com.ar';
         $email = new OrderMailable($data);
         Mail::to($to)->send($email);
 
