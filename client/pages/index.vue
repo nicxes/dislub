@@ -61,7 +61,7 @@
         <div class="flex">
           <div class="bg-white p-8 mx-auto border-2 border-line rounded-[36px]">
             <img
-              src="https://scontent.fepa8-2.fna.fbcdn.net/v/t1.18169-9/22730494_1499839286771311_6711186237223725316_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=HZE0h1jJW44AX824IwW&_nc_ht=scontent.fepa8-2.fna&oh=00_AT8-7ITpA4PlJOSWZ5IrlCp707pqkKDwY61D9sSKxJ_Ymg&oe=620A1364"
+              src="/images/dislub-avatar.png"
               class="w-40 h-40"
             >
           </div>

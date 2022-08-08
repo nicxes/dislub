@@ -64,7 +64,7 @@
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center">
             <img
-              src="https://scontent.fepa8-2.fna.fbcdn.net/v/t1.18169-9/22730494_1499839286771311_6711186237223725316_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=HZE0h1jJW44AX824IwW&_nc_ht=scontent.fepa8-2.fna&oh=00_AT8-7ITpA4PlJOSWZ5IrlCp707pqkKDwY61D9sSKxJ_Ymg&oe=620A1364"
+              src="/images/dislub-avatar.png"
               class="h-8 w-8 rounded-lg border-2 border-line bg-white p-1 mr-2"
             >
             <span class="text-darked text-lg font-semibold">
