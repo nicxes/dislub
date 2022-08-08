@@ -33,7 +33,7 @@
     </ul>
 
     <transition name="fade">
-      <div v-if="modal.create" class="absolute z-50 left-0 right-0 top-0 bottom-auto md:bottom-0 bg-black bg-opacity-30 flex items-center justify-center" @click="toggleModal('create')">
+      <div v-if="modal.create" class="fixed z-50 left-0 right-0 top-0 bottom-auto md:bottom-0 bg-black bg-opacity-30 flex items-center justify-center" @click="toggleModal('create')">
         <div class="bg-white p-6 md:rounded-2xl w-full max-w-[870px]" @click.stop>
           <div class="flex items-center justify-between mb-6">
             <h3 class="text-[#14142B] text-2xl font-bold">Crear nuevo usuario</h3>
@@ -177,7 +177,7 @@
     </transition>
 
     <transition name="fade">
-      <div v-if="modal.edit" class="absolute z-50 left-0 right-0 top-0 bottom-auto md:bottom-0 bg-black bg-opacity-30 flex items-center justify-center" @click="toggleModal('edit')">
+      <div v-if="modal.edit" class="fixed z-50 left-0 right-0 top-0 bottom-auto md:bottom-0 bg-black bg-opacity-30 flex items-center justify-center" @click="toggleModal('edit')">
         <div class="bg-white p-6 md:rounded-2xl w-full max-w-[870px]" @click.stop>
           <div class="flex items-center justify-between mb-6">
             <h3 class="text-[#14142B] text-2xl font-bold">Editar usuario</h3>
