@@ -50,22 +50,22 @@ class CategorySeeder extends Seeder
             // Products
             [
               'id' => 7,
-              'name' => 'Lubricante mineral',
+              'name' => 'Mineral',
               'type' => 'PRODUCTS',
             ],
             [
               'id' => 8,
-              'name' => 'Lubricante sintético',
+              'name' => 'Sintético',
               'type' => 'PRODUCTS',
             ],
             [
               'id' => 9,
-              'name' => 'Lubricante semisintético',
+              'name' => 'Semisintético',
               'type' => 'PRODUCTS',
             ],
             [
               'id' => 10,
-              'name' => 'Lubricante hidráulico',
+              'name' => 'Hidráulico',
               'type' => 'PRODUCTS',
             ],
             [

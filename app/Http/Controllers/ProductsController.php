@@ -24,6 +24,16 @@ class ProductsController extends Controller
     }
 
     /**
+     * Endpoint getting the lasted products added to the list
+     */
+    public function lasted(Request $request)
+    {
+        $products = Product::latest()->take(12)->get();
+
+        return $this->render($products);
+    }
+
+    /**
      * Endpoint to find a specified product from ID
      */
     public function find(Request $request, $id)

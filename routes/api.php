@@ -59,6 +59,7 @@ Route::delete('/organizations/{id}', [OrganizationsController::class, 'destroy']
 
 // Products
 Route::get('/products', [ProductsController::class, 'index'])->name('getting the product list');
+Route::get('/products/lasted', [ProductsController::class, 'lasted'])->name('getting the lasted 12 products added');
 Route::get('/products/{id}', [ProductsController::class, 'find'])->name('getting product by id');
 Route::post('/products', [ProductsController::class, 'store'])->name('create a new product');
 Route::put('/products/{id}', [ProductsController::class, 'update'])->name('update an product');

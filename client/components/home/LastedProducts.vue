@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     getProducts () {
-      this.$axios.$get('/products').then((res) => {
+      this.$axios.$get('/products/lasted').then((res) => {
         this.products = res.data
       }).catch((err) => {
         console.log(err)

@@ -17,18 +17,18 @@ class OrganizationSeeder extends Seeder
         // Custom data to store.
         $organizations = [
             [
-                'name' => 'Lubricentro San Cristobal',
-                'pin' => '1234',
+                'name' => 'Dislub',
+                'pin' => '9214',
                 'role' => 'ADMIN',
-                'email' => 'paconicolasmiranda@gmail.com',
-                'phone' => '+54 911 5555-5555',
+                'email' => 'hernan@dislub.com.ar',
+                'phone' => '',
             ],
             [
-                'name' => 'VHGarage',
-                'pin' => '0303',
-                'role' => 'USER',
+                'name' => 'Dislub System',
+                'pin' => '7777',
+                'role' => 'ADMIN',
                 'email' => 'paconicolasmiranda@gmail.com',
-                'phone' => '+54 911 5555-5555',
+                'phone' => '+5492235219100',
             ],
         ];
 
