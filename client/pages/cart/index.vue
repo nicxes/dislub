@@ -2,8 +2,8 @@
   <section class="px-4 md:px-6 pb-20">
     <transition name="fade">
       <div v-if="status">
-        <div class="grid grid-cols-1 md:grid-cols-2 divide-x-2">
-          <div v-if="$store.getters['cart/quantity'] > 0" class="pr-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 md:divide-x-2">
+          <div v-if="$store.getters['cart/quantity'] > 0" class="md:pr-8">
             <h5 class="text-lg mb-4">Productos</h5>
 
             <ul class="grid grid-cols-1 gap-4 pb-6 mb-6 border-b-2 border-line">
@@ -23,7 +23,7 @@
             <p class="text-[#4E4B66] font-medium leading-[28px]">Agregue productos para poder enviar su cotización.</p>
           </div>
 
-          <div class="pl-8">
+          <div class="md:pl-8">
             <h3 class="text-2xl font-bold mb-2">Confirme su dirección de correo electrónico</h3>
             <p class="mb-2">Esta es la dirección a donde nuestro equipo enviará la cotización una vez lista:</p>
 
