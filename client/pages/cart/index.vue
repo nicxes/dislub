@@ -2,7 +2,7 @@
   <section class="px-4 md:px-6 pb-20">
     <transition name="fade">
       <div v-if="status">
-        <div class="grid grid-cols-2 divide-x-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 divide-x-2">
           <div v-if="$store.getters['cart/quantity'] > 0" class="pr-8">
             <h5 class="text-lg mb-4">Productos</h5>
 

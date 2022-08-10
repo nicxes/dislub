@@ -33,13 +33,13 @@
       </div>
     </nav>
 
-    <div v-if="showCart" class="bg-primary-yellow text-white px-2 py-1 flex flex-col items-center justify-between mb-6">
+    <NuxtLink to="/cart" v-if="showCart" class="bg-primary-yellow text-white px-2 py-1 flex flex-col items-center justify-between mb-6">
       <div class="flex items-center">
         <img src="/images/icons/cart.svg" class="mr-1">
         <span class="text-[13px] font-medium">Cotización actual:</span>
       </div>
       <span class="text-sm font-semibold leading-[26px]">{{ $store.getters['cart/quantity'] }} productos</span>
-    </div>
+    </NuxtLink>
   </div>
 </template>
 
