@@ -1,6 +1,6 @@
 <template>
   <section class="px-4 md:px-6 pb-64 md:pb-0">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6 mb-4 md:mb-10"> 
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6 mb-4 md:mb-10">
       <div class="flex mb-2 md:hidden">
         <button
           class="text-primary text-[14px] font-semibold leading-[24px] p-2 border-2 rounded-2xl hover:bg-[#EFF0F6] hover:border-[#EFF0F6] border-line transition duration-300 ease-out mr-4 flex items-center"
@@ -33,12 +33,12 @@
 
             <li class="mb-2">
               <h5 class="text-[#6E7191] text-[13px] md:text-base font-semibold">Viscocidad:</h5>
-              <h6 class="md:text-lg">XXXX</h6>
+              <h6 class="md:text-lg">{{ product.viscocidad || '-' }}</h6>
             </li>
 
             <li class="md:mb-2">
               <h5 class="text-[#6E7191] text-[13px] md:text-base font-semibold">Volumen (Lts.)</h5>
-              <h6 class="md:text-lg">XXXX</h6>
+              <h6 class="md:text-lg">{{ product.volume || '-' }}</h6>
             </li>
           </ul>
         </div>
