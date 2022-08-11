@@ -119,7 +119,7 @@
         v-for="(product, i) in searchByProductName"
         :key="i"
         :product="product"
-        :image="`images/products/${randomInt(1, 4)}.png`"
+        :image="`images/products/placeholder.svg`"
       />
     </ul>
 
