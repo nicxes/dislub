@@ -6,7 +6,7 @@
     <div class="relative mb-6">
       <swiper ref="carousel" :options="swiperOptions">
         <swiper-slide v-for="(product, i) in products" :key="i">
-          <CardProduct :product="product" image="/images/products/1.png" />
+          <CardProduct :product="product" image="/images/products/placeholder.svg" />
         </swiper-slide>
 
         <div slot="pagination" class="swiper-pagination" />
