@@ -21,9 +21,9 @@ use App\Http\Controllers\SettingsController;
 |
 */
 
-Route::get('/', [Controller::class, 'routes'])
+/*Route::get('/', [Controller::class, 'routes'])
     ->name('route information')
-    ->withoutMiddleware('api');
+    ->withoutMiddleware('api');*/
 
 // Authentication
 Route::get('/login', [Controller::class, 'auth'])->name('login')->name('proper login redirect');

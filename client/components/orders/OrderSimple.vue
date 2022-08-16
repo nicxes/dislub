@@ -1,7 +1,7 @@
 <template>
   <li class="card relative grid grid-cols-8 md:grid-cols-6 gap-3 bg-[#FCFCFC] border-2 border-background rounded-2xl p-4 items-baseline">
     <div class="col-span-2 md:col-auto">
-      <img src="/images/products/1.png" :alt="product.product.name" class="border-2 border-line rounded-2xl p-4">
+      <img src="/images/products/placeholder.svg" :alt="product.product.name" class="border-2 border-line rounded-2xl p-4">
     </div>
 
     <div class="col-span-4 md:col-span-4">

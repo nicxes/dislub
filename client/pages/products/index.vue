@@ -114,7 +114,7 @@
       </div>
     </div>
 
-    <ul v-if="searchByProductName.length > 0" class="grid grid-cols-2 md:grid-cols-7 gap-y-4 gap-x-5 md:gap-6">
+    <ul v-if="searchByProductName.length > 0" class="grid grid-cols-1 md:grid-cols-[repeat(auto-fill,220px)] gap-2 justify-between">
       <CardProduct
         v-for="(product, i) in searchByProductName"
         :key="i"

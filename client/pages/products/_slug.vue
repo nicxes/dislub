@@ -15,8 +15,8 @@
         {{ product.name }}
       </h1>
 
-      <div class="image bg-[#FCFCFC] rounded-[36px] p-14 mb-3 md:mb-0">
-        <img src="/images/products/5-full.png" alt="" class="mx-auto">
+      <div class="image bg-[#FCFCFC] rounded-[36px] p-14 mb-3 md:mb-0 flex items-center justify-center">
+        <img src="/images/products/placeholder.svg" alt="" class="mx-auto">
       </div>
 
       <div class="flex flex-col justify-between">
@@ -50,7 +50,7 @@
             </button>
 
             <input
-              v-model="quatity"
+              v-model="quantity"
               min="0"
               type="number"
               placeholder="Cantidad"
@@ -105,7 +105,7 @@
         </button>
 
         <input
-          v-model="quatity"
+          v-model="quantity"
           min="0"
           type="number"
           placeholder="Cantidad"
@@ -151,7 +151,7 @@ export default {
   data () {
     return {
       loading: false,
-      quatity: null,
+      quantity: null,
       width: null,
     }
   },
@@ -169,7 +169,7 @@ export default {
       }
     },
     addToCart () {
-      if (!this.quantity)
+      if (!this.quantity || this.quantity < 1)
         this.addMore()
 
       this.loading = true
@@ -183,18 +183,18 @@ export default {
         this.$store.dispatch('cart/add', {
           ...this.product,
           product_id: this.product.id,
-          quantity: this.quatity || 1,
+          quantity: this.quantity || 1,
         })
 
         this.loading = false
       }, 750)
     },
     addMore () {
-      this.quatity++
+      this.quantity++
     },
     addLess () {
-      if (this.quatity > 0)
-        this.quatity--
+      if (this.quantity > 0)
+        this.quantity--
     },
   },
 }
